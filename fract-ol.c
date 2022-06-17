@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fract-ol.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:10:35 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/13 14:49:52 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/06/17 15:24:57 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	
 // }
 
-int main(int argc, char const *argv[])
+int main(int argc, char *argv[])
 {
 	// void	*mlx;
 	// void	*mlx_win;
@@ -59,6 +59,7 @@ int main(int argc, char const *argv[])
 	j = 0;
 	
 	mlx.mlx = mlx_init(); //2560x1600
+	input_check(argc, argv, &mlx);
 	mlx.win = mlx_new_window(mlx.mlx, width, height, "Fract-ol");
 	mlx.img.img_ptr = mlx_new_image(mlx.mlx, width, height);
 	mlx.img.data = mlx_get_data_addr(mlx.img.img_ptr, &mlx.img.bpp, &mlx.img.size_l, &mlx.img.endian);

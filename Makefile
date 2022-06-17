@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+         #
+#    By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/05 18:48:15 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/06/12 21:29:55 by ankasamanya      ###   ########.fr        #
+#    Updated: 2022/06/17 15:27:20 by akasaman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fract-ol
+NAME = fractol
 
-SRC = fract-ol.c
+SRC = fract-ol.c input.c
 
 OBJ =	$(SRC:.c=.o)
 
@@ -28,10 +28,11 @@ MLX =	libmlx.a -framework OpenGL -framework AppKit -o
 all: $(NAME)
 
 $(NAME): $(OBJ) $(SRC)
-	$(MAKE) -C mlx
-	$(MV) mlx/libmlx.a mlx/..
-	$(MAKE) bonus -C Libft
-	$(CC) $(FLAGS) $(OBJ) $(MLX) $(NAME) $(LIBFT)
+	@$(MAKE) -C mlx
+	@$(MV) mlx/libmlx.a mlx/..
+	@$(MAKE) bonus -C Libft
+	@$(CC) $(FLAGS) $(OBJ) $(MLX) $(NAME) $(LIBFT)
+	@echo "\033[92mminshell successfully compiled!\033[0m"
 
 clean:
 	$(MAKE) fclean -C Libft

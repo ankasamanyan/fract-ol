@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/13 02:39:17 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/06/17 15:09:03 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
+# include "Libft/libft.h"
 # include "mlx/mlx.h"
 
 #define width 1440
@@ -67,6 +68,7 @@ typedef struct s_mlx
 
 int	x_close(t_mlx *mlx);
 int	key_handler(int keycode, t_mlx *mlx);
+int	input_check(int argc, char **argv, t_mlx *mlx);
 
 // typedef struct	s_data {
 // 	void	*mlx;
