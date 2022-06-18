@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:10:35 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/17 15:24:57 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/06/18 19:21:43 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	
 // }
 
+
 int main(int argc, char *argv[])
 {
 	// void	*mlx;
@@ -60,8 +61,8 @@ int main(int argc, char *argv[])
 	
 	mlx.mlx = mlx_init(); //2560x1600
 	input_check(argc, argv, &mlx);
-	mlx.win = mlx_new_window(mlx.mlx, width, height, "Fract-ol");
-	mlx.img.img_ptr = mlx_new_image(mlx.mlx, width, height);
+	mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "Fract-ol");
+	mlx.img.img_ptr = mlx_new_image(mlx.mlx, WIDTH, HEIGHT);
 	mlx.img.data = mlx_get_data_addr(mlx.img.img_ptr, &mlx.img.bpp, &mlx.img.size_l, &mlx.img.endian);
 
 	//нарисовать изображение тут

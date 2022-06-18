@@ -6,7 +6,7 @@
 #    By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/05 18:48:15 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/06/17 15:27:20 by akasaman         ###   ########.fr        #
+#    Updated: 2022/06/18 19:10:57 by akasaman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,14 +32,15 @@ $(NAME): $(OBJ) $(SRC)
 	@$(MV) mlx/libmlx.a mlx/..
 	@$(MAKE) bonus -C Libft
 	@$(CC) $(FLAGS) $(OBJ) $(MLX) $(NAME) $(LIBFT)
-	@echo "\033[92mminshell successfully compiled!\033[0m"
+	@echo "\033[92mFract-ol successfully compiled!\033[0m"
 
 clean:
-	$(MAKE) fclean -C Libft
-	$(RM) $(OBJ) $(BONUS_OBJ) libmlx.a
+	@$(MAKE) fclean -C Libft
+	@$(RM) $(OBJ) $(BONUS_OBJ) libmlx.a
+	@echo "\033[91mFract-ol successfully cleaned!\033[91m"
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 

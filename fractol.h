@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/17 15:09:03 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/06/18 19:24:43 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 # include "Libft/libft.h"
 # include "mlx/mlx.h"
 
-#define width 1440
-#define height 780
+# define WIDTH 500 //1440
+# define HEIGHT 500 //780
+# define MAX_ITER 50
 
 enum {
 	ON_KEYDOWN = 2,
@@ -57,14 +58,21 @@ typedef struct s_mlx
 	void	*win;
 	int		max_iter;
 	int		type;
-	double	center_x;
-	double	center_y;
+	// double	center_x;
+	// double	center_y;
+	double	x_max;
+	double	x_min;
+	double	y_max;
+	double	y_min;
 	int		scale;
 	t_img	img;
 }	t_mlx;
 
-
-
+typedef struct s_complex
+{
+	double	compl_x;
+	double	compl_y;
+}	t_copmlex;
 
 int	x_close(t_mlx *mlx);
 int	key_handler(int keycode, t_mlx *mlx);
