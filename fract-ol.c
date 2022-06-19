@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:10:35 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/18 19:21:43 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/06/19 16:46:32 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,29 +38,47 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-// draw( t_mlx mlx)
-// {
-// 	for (size_t y  = 0; y < height; y++)
-// 	{
-// 		/* code */
-// 	}
+draw( t_mlx mlx)
+{
+	int x;
+	int y;
 	
-// }
+	x = 0;
+	while (x < WIDTH)
+	{
+		while (y < HEIGHT)
+		{
+			
+			y++;
+		}
+		x++;
+	}
+	
+	
+}
+t_copmlex	screen_to_complex(t_mlx mlx, int x, int y)
+{
+	t_copmlex	complex;
 
+	complex.x = ((x / WIDTH) * (mlx.max_x - mlx.min_x)) + mlx.min_x;
+	complex.y = ((y / HEIGHT) * (mlx.max_y - mlx.min_x)) + mlx.min_y;
+	return (complex);
+}
 
 int main(int argc, char *argv[])
 {
 	// void	*mlx;
 	// void	*mlx_win;
 	t_mlx	mlx;
-	int		i;
-	int		j;
+	// int		i;
+	// int		j;
 
-	i = 0;
-	j = 0;
+	// i = 0;
+	// j = 0;
 	
 	mlx.mlx = mlx_init(); //2560x1600
 	input_check(argc, argv, &mlx);
+	
 	mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "Fract-ol");
 	mlx.img.img_ptr = mlx_new_image(mlx.mlx, WIDTH, HEIGHT);
 	mlx.img.data = mlx_get_data_addr(mlx.img.img_ptr, &mlx.img.bpp, &mlx.img.size_l, &mlx.img.endian);
