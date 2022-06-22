@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fract-ol.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:10:35 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/19 16:46:32 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/06/22 17:48:48 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,43 +38,63 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-draw( t_mlx mlx)
+void	draw( t_mlx mlx)
 {
 	int x;
 	int y;
-	
+	int	iter;
+
 	x = 0;
 	while (x < WIDTH)
 	{
+		y = 0;
 		while (y < HEIGHT)
 		{
-			
+			screen_to_complex(mlx, x, y);
+			mandelbrot(mlx, (double)x, (double)y);
 			y++;
 		}
 		x++;
 	}
-	
-	
+	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img.img_ptr, 0, 0);
 }
+
 t_copmlex	screen_to_complex(t_mlx mlx, int x, int y)
 {
 	t_copmlex	complex;
 
-	complex.x = ((x / WIDTH) * (mlx.max_x - mlx.min_x)) + mlx.min_x;
-	complex.y = ((y / HEIGHT) * (mlx.max_y - mlx.min_x)) + mlx.min_y;
+	complex.x = ((x / (double)WIDTH) * (mlx.max_x - mlx.min_x)) + mlx.min_x;
+	complex.y = ((y / (double)HEIGHT) * (mlx.max_y - mlx.min_x)) + mlx.min_y;
 	return (complex);
+}
+
+void	mandelbrot(t_mlx mlx, double x, double y)
+{
+	double	start_x;
+	double	start_y;
+	double	temp_x;
+	int		iter;
+
+	iter = 0;
+	start_x = x;
+	start_y = y;
+	
+	while ((pow(x, 2) + pow(y, 2)) < 4 && iter < MAX_ITER)
+	{
+		temp_x = x;
+		x = pow(x, 2.0) + (2 * sqrt(-1.0) * y * x) +  pow(y, 2.0);
+		y = 2 * y * temp_x + start_y;
+	}
+	// return (iter);
+	if (iter == MAX_ITER)
+		my_mlx_pixel_put(&mlx.img, x, y, 0x00000000);
+	else if (iter < MAX_ITER)
+		my_mlx_pixel_put(&mlx.img, x, y, 0x00B852D9); 
 }
 
 int main(int argc, char *argv[])
 {
-	// void	*mlx;
-	// void	*mlx_win;
 	t_mlx	mlx;
-	// int		i;
-	// int		j;
-
-	// i = 0;
-	// j = 0;
 	
 	mlx.mlx = mlx_init(); //2560x1600
 	input_check(argc, argv, &mlx);
@@ -84,8 +104,7 @@ int main(int argc, char *argv[])
 	mlx.img.data = mlx_get_data_addr(mlx.img.img_ptr, &mlx.img.bpp, &mlx.img.size_l, &mlx.img.endian);
 
 	//нарисовать изображение тут
-	
-	
+	draw(mlx);
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img.img_ptr, 0, 0); 
 	
 	//или же нарисовать изображение туть 
