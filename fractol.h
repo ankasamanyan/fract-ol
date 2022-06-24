@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/24 09:21:27 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/06/24 19:39:25 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,21 +69,21 @@ typedef struct s_mlx
 	t_img	img;
 }	t_mlx;
 
-typedef struct s_complex
+typedef struct s_copmlx
 {
 	double	x;
 	double	y;
-}	t_copmlex;
+}	t_copmlx;
 
 int			x_close(t_mlx *mlx);
 int			key_handler(int keycode, t_mlx *mlx);
 int			input_check(int argc, char **argv, t_mlx *mlx);
-t_copmlex	screen_to_complex(t_mlx mlx, int x, int y);
+t_copmlx	screen_to_complex(t_mlx mlx, int x, int y);
 int			mandelbrot(t_mlx mlx, double x, double y);
 void		draw( t_mlx mlx);
-t_copmlex	vector_add(t_copmlex first, t_copmlex second);
-t_copmlex	vector_multpl(t_copmlex first, t_copmlex second);
-t_copmlex	the_math(t_copmlex z);
+t_copmlx	vector_add(t_copmlx first, t_copmlx second);
+t_copmlx	vector_multpl(t_copmlx first, t_copmlx second);
+t_copmlx	the_math(t_copmlx z);
 
 
 

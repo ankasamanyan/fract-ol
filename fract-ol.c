@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:10:35 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/24 19:33:55 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/06/24 19:38:55 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,29 +38,29 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-t_copmlex	screen_to_complex(t_mlx mlx, int x, int y)
+t_copmlx	screen_to_complex(t_mlx mlx, int x, int y)
 {
-	t_copmlex	complex;
+	t_copmlx	complex;
 
 	complex.x = ((x / (double)WIDTH) * (mlx.max_x - mlx.min_x)) + mlx.min_x;
 	complex.y = ((y / (double)HEIGHT) * (mlx.max_y - mlx.min_x)) + mlx.min_y;
 	return (complex);
 }
 
-t_copmlex	vector_add(t_copmlex first, t_copmlex second)
+t_copmlx	vector_add(t_copmlx first, t_copmlx second)
 {
-	t_copmlex	complex;
+	t_copmlx	complex;
 
 	complex.x = first.x + second.x;
 	complex.y = first.y + second.y;
 	return (complex);
 }
 
-// (a,b); (c,d);
+// x(a,b); y(c,d);
 // x(ac-bd); y(ad+bc)
-t_copmlex	vector_multpl(t_copmlex first, t_copmlex second)
+t_copmlx	vector_multpl(t_copmlx first, t_copmlx second)
 {
-	t_copmlex	complex;
+	t_copmlx	complex;
 
 	complex.x = (first.x * second.x) - (first.y * second.y);
 	complex.y = (first.x * second.y ) + (first.x * second.x);
@@ -68,10 +68,10 @@ t_copmlex	vector_multpl(t_copmlex first, t_copmlex second)
 }
 
 //z^2 + c 
-t_copmlex	the_math(t_copmlex z)
+t_copmlx	the_math(t_copmlx z)
 {
-	t_copmlex	complex;
-	t_copmlex	constant;
+	t_copmlx	complex;
+	t_copmlx	constant;
 
 	constant.x = complex.x;
 	constant.y = complex.y;
@@ -81,7 +81,7 @@ t_copmlex	the_math(t_copmlex z)
 
 int	mandelbrot(t_mlx mlx, double x, double y)
 {
-	t_copmlex complex;
+	t_copmlx complex;
 	int		iter;
 
 	iter = 0;
@@ -97,10 +97,10 @@ int	mandelbrot(t_mlx mlx, double x, double y)
 		// y = 2 * y * temp_x + start_y;
 		iter++;
 	}
-	// if (iter == MAX_ITER)
-	// 	my_mlx_pixel_put(&mlx.img, x, y, 0x00000000);
-	// else if (iter < MAX_ITER)
-	// 	my_mlx_pixel_put(&mlx.img, x, y, 0x00B852D9); 
+	if (iter == MAX_ITER)
+		my_mlx_pixel_put(&mlx.img, x, y, 0x00000000);
+	else if (iter < MAX_ITER)
+		my_mlx_pixel_put(&mlx.img, x, y, 0x00B852D9); 
 	return (iter);
 }
 
@@ -118,10 +118,10 @@ void	draw( t_mlx mlx)
 		{
 			screen_to_complex(mlx, x, y);
 			iter = mandelbrot(mlx, x, y);
-			if (iter == MAX_ITER)
-				my_mlx_pixel_put(&mlx.img, x, y, 0x00000000);
-			else
-				my_mlx_pixel_put(&mlx.img, x, y, 0x00B852D9); 
+			// if (iter == MAX_ITER)
+			// 	my_mlx_pixel_put(&mlx.img, x, y, 0x00000000);
+			// else
+			// 	my_mlx_pixel_put(&mlx.img, x, y, 0x00B852D9); 
 			y++;
 		}
 		x++;
