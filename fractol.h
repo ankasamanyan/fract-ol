@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/22 15:39:11 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/06/24 09:21:27 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define WIDTH 1440
 # define HEIGHT 780
-# define MAX_ITER 500
+# define MAX_ITER 50
 
 enum {
 	ON_KEYDOWN = 2,
@@ -49,6 +49,8 @@ typedef struct s_img
 	int		size_l;
 	int		bpp;
 	int		endian;
+	int		x;
+	int		y;
 }	t_img;
 
 typedef struct s_mlx
@@ -73,12 +75,17 @@ typedef struct s_complex
 	double	y;
 }	t_copmlex;
 
-int	x_close(t_mlx *mlx);
-int	key_handler(int keycode, t_mlx *mlx);
-int	input_check(int argc, char **argv, t_mlx *mlx);
+int			x_close(t_mlx *mlx);
+int			key_handler(int keycode, t_mlx *mlx);
+int			input_check(int argc, char **argv, t_mlx *mlx);
 t_copmlex	screen_to_complex(t_mlx mlx, int x, int y);
-void	mandelbrot(t_mlx mlx, double x, double y);
-void	draw( t_mlx mlx);
+int			mandelbrot(t_mlx mlx, double x, double y);
+void		draw( t_mlx mlx);
+t_copmlex	vector_add(t_copmlex first, t_copmlex second);
+t_copmlex	vector_multpl(t_copmlex first, t_copmlex second);
+t_copmlex	the_math(t_copmlex z);
+
+
 
 // typedef struct	s_data {
 // 	void	*mlx;

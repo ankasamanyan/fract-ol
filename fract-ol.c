@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:10:35 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/22 17:48:48 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/06/24 09:51:40 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,78 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+t_copmlex	screen_to_complex(t_mlx mlx, int x, int y)
+{
+	t_copmlex	complex;
+
+	complex.x = ((x / (double)WIDTH) * (mlx.max_x - mlx.min_x)) + mlx.min_x;
+	complex.y = ((y / (double)HEIGHT) * (mlx.max_y - mlx.min_x)) + mlx.min_y;
+	return (complex);
+}
+
+t_copmlex	vector_add(t_copmlex first, t_copmlex second)
+{
+	t_copmlex	complex;
+
+	complex.x = first.x + second.x;
+	complex.y = first.y + second.y;
+	return (complex);
+}
+
+// (a,b); (c,d);
+// x(ac-bd); y(ad+bc)
+t_copmlex	vector_multpl(t_copmlex first, t_copmlex second)
+{
+	t_copmlex	complex;
+
+	complex.x = (first.x * second.x) - (first.y * second.y);
+	complex.y = (first.x * second.y ) + (first.x * second.x);
+	return (complex);
+}
+
+//z^2 + c 
+t_copmlex	the_math(t_copmlex z)
+{
+	t_copmlex	complex;
+	t_copmlex	constant;
+
+	constant.x = complex.x;
+	constant.y = complex.y;
+	complex = vector_add(vector_multpl(z, z), constant);
+	return (complex);
+}
+
+int	mandelbrot(t_mlx mlx, double x, double y)
+{
+	t_copmlex complex;
+	int		iter;
+	// int		
+
+	iter = 0;
+	complex.x = 0.0;
+	complex.y = 0.0;
+
+	while (((pow(complex.x, 2) + pow(complex.y, 2)) < 4) )
+	{
+		complex = the_math(complex);
+		// printf("what\n");
+		// temp_x = x;
+		// x = pow(x, 2.0) + (2 * sqrt(-1.0) * y * x) + pow(y, 2.0);
+		// y = 2 * y * temp_x + start_y;
+		
+		// if (iter == MAX_ITER)
+		// 	my_mlx_pixel_put(&mlx.img, complex.x, complex.y, 0x00000000);
+		// else
+		// 	my_mlx_pixel_put(&mlx.img, complex.x, complex.y, 0x00B852D9); 
+		iter++;
+	}
+	if (iter == MAX_ITER)
+		my_mlx_pixel_put(&mlx.img, x, y, 0x00000000);
+	else if (iter < MAX_ITER)
+		my_mlx_pixel_put(&mlx.img, x, y, 0x00B852D9); 
+	return (iter);
+}
+
 void	draw( t_mlx mlx)
 {
 	int x;
@@ -51,46 +123,19 @@ void	draw( t_mlx mlx)
 		while (y < HEIGHT)
 		{
 			screen_to_complex(mlx, x, y);
-			mandelbrot(mlx, (double)x, (double)y);
+			iter = mandelbrot(mlx, x, y);
+			// if (iter == MAX_ITER)
+			// 	my_mlx_pixel_put(&mlx.img, x, y, 0x00000000);
+			// else
+			// 	my_mlx_pixel_put(&mlx.img, x, y, 0x00B852D9); 
 			y++;
 		}
 		x++;
 	}
+	printf("%i", iter);
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img.img_ptr, 0, 0);
 }
 
-t_copmlex	screen_to_complex(t_mlx mlx, int x, int y)
-{
-	t_copmlex	complex;
-
-	complex.x = ((x / (double)WIDTH) * (mlx.max_x - mlx.min_x)) + mlx.min_x;
-	complex.y = ((y / (double)HEIGHT) * (mlx.max_y - mlx.min_x)) + mlx.min_y;
-	return (complex);
-}
-
-void	mandelbrot(t_mlx mlx, double x, double y)
-{
-	double	start_x;
-	double	start_y;
-	double	temp_x;
-	int		iter;
-
-	iter = 0;
-	start_x = x;
-	start_y = y;
-	
-	while ((pow(x, 2) + pow(y, 2)) < 4 && iter < MAX_ITER)
-	{
-		temp_x = x;
-		x = pow(x, 2.0) + (2 * sqrt(-1.0) * y * x) +  pow(y, 2.0);
-		y = 2 * y * temp_x + start_y;
-	}
-	// return (iter);
-	if (iter == MAX_ITER)
-		my_mlx_pixel_put(&mlx.img, x, y, 0x00000000);
-	else if (iter < MAX_ITER)
-		my_mlx_pixel_put(&mlx.img, x, y, 0x00B852D9); 
-}
 
 int main(int argc, char *argv[])
 {
