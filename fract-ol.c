@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fract-ol.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:10:35 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/24 09:51:40 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/06/24 19:16:53 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,12 @@ int	mandelbrot(t_mlx mlx, double x, double y)
 {
 	t_copmlex complex;
 	int		iter;
-	// int		
 
 	iter = 0;
 	complex.x = 0.0;
 	complex.y = 0.0;
 
-	while (((pow(complex.x, 2) + pow(complex.y, 2)) < 4) )
+	while (((pow(complex.x, 2) + pow(complex.y, 2)) < 4) && (iter < MAX_ITER))
 	{
 		complex = the_math(complex);
 		// printf("what\n");
@@ -103,10 +102,10 @@ int	mandelbrot(t_mlx mlx, double x, double y)
 		// 	my_mlx_pixel_put(&mlx.img, complex.x, complex.y, 0x00B852D9); 
 		iter++;
 	}
-	if (iter == MAX_ITER)
-		my_mlx_pixel_put(&mlx.img, x, y, 0x00000000);
-	else if (iter < MAX_ITER)
-		my_mlx_pixel_put(&mlx.img, x, y, 0x00B852D9); 
+	// if (iter == MAX_ITER)
+	// 	my_mlx_pixel_put(&mlx.img, x, y, 0x00000000);
+	// else if (iter < MAX_ITER)
+	// 	my_mlx_pixel_put(&mlx.img, x, y, 0x00B852D9); 
 	return (iter);
 }
 
@@ -124,10 +123,10 @@ void	draw( t_mlx mlx)
 		{
 			screen_to_complex(mlx, x, y);
 			iter = mandelbrot(mlx, x, y);
-			// if (iter == MAX_ITER)
-			// 	my_mlx_pixel_put(&mlx.img, x, y, 0x00000000);
-			// else
-			// 	my_mlx_pixel_put(&mlx.img, x, y, 0x00B852D9); 
+			if (iter == MAX_ITER)
+				my_mlx_pixel_put(&mlx.img, x, y, 0x00000000);
+			else
+				my_mlx_pixel_put(&mlx.img, x, y, 0x00B852D9); 
 			y++;
 		}
 		x++;
