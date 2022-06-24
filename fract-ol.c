@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:10:35 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/24 19:16:53 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/06/24 19:33:55 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,21 +85,16 @@ int	mandelbrot(t_mlx mlx, double x, double y)
 	int		iter;
 
 	iter = 0;
-	complex.x = 0.0;
-	complex.y = 0.0;
+	x = 0.0;
+	y = 0.0;
 
-	while (((pow(complex.x, 2) + pow(complex.y, 2)) < 4) && (iter < MAX_ITER))
+	while (((pow(x, 2) + pow(y, 2)) < 4) && (iter < MAX_ITER))
 	{
 		complex = the_math(complex);
 		// printf("what\n");
 		// temp_x = x;
 		// x = pow(x, 2.0) + (2 * sqrt(-1.0) * y * x) + pow(y, 2.0);
 		// y = 2 * y * temp_x + start_y;
-		
-		// if (iter == MAX_ITER)
-		// 	my_mlx_pixel_put(&mlx.img, complex.x, complex.y, 0x00000000);
-		// else
-		// 	my_mlx_pixel_put(&mlx.img, complex.x, complex.y, 0x00B852D9); 
 		iter++;
 	}
 	// if (iter == MAX_ITER)
@@ -142,16 +137,12 @@ int main(int argc, char *argv[])
 	
 	mlx.mlx = mlx_init(); //2560x1600
 	input_check(argc, argv, &mlx);
-	
 	mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "Fract-ol");
 	mlx.img.img_ptr = mlx_new_image(mlx.mlx, WIDTH, HEIGHT);
 	mlx.img.data = mlx_get_data_addr(mlx.img.img_ptr, &mlx.img.bpp, &mlx.img.size_l, &mlx.img.endian);
-
 	//нарисовать изображение тут
 	draw(mlx);
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img.img_ptr, 0, 0); 
-	
-	//или же нарисовать изображение туть 
 	mlx_hook(mlx.win, ON_DESTROY, 0, x_close, &mlx);
 	mlx_hook(mlx.win, ON_KEYDOWN, 0, key_handler, &mlx);
 	mlx_loop(mlx.mlx);
