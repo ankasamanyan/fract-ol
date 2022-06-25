@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/24 19:39:25 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/06/25 18:38:32 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,16 @@
 # include "Libft/libft.h"
 # include "mlx/mlx.h"
 
-# define WIDTH 1440
+# define WIDTH  1440
 # define HEIGHT 780
-# define MAX_ITER 50
+
+# define MAX_ITER 255
+
+# define MAX_X 1.2
+# define MIN_X -2.4
+
+# define MAX_Y 1
+# define MIN_Y -1
 
 enum {
 	ON_KEYDOWN = 2,
@@ -77,13 +84,14 @@ typedef struct s_copmlx
 
 int			x_close(t_mlx *mlx);
 int			key_handler(int keycode, t_mlx *mlx);
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 int			input_check(int argc, char **argv, t_mlx *mlx);
 t_copmlx	screen_to_complex(t_mlx mlx, int x, int y);
-int			mandelbrot(t_mlx mlx, double x, double y);
+void	mandelbrot(t_mlx mlx, int x, int y);
 void		draw( t_mlx mlx);
 t_copmlx	vector_add(t_copmlx first, t_copmlx second);
 t_copmlx	vector_multpl(t_copmlx first, t_copmlx second);
-t_copmlx	the_math(t_copmlx z);
+t_copmlx	the_math(t_copmlx z, t_copmlx constant);
 
 
 
