@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   the_math.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 14:34:38 by akasaman          #+#    #+#             */
-/*   Updated: 2022/06/25 18:31:19 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/06/29 18:42:41 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ t_copmlx	screen_to_complex(t_mlx mlx, int x, int y)
 {
 	t_copmlx	complex;
 
-	complex.x = (x / (double)WIDTH) * (MAX_X - MIN_X) + MIN_X;
-	complex.y = ((y / (double)HEIGHT) * (MAX_Y - MIN_Y) + MIN_Y);
+	complex.x = (x / (double)WIDTH) * (mlx.max_x - mlx.min_x) + mlx.min_x;
+	complex.y = (y / (double)HEIGHT) * (mlx.max_y - mlx.min_y) + mlx.min_y;
 	return (complex);
 }
 
@@ -37,7 +37,7 @@ t_copmlx	vector_multpl(t_copmlx first, t_copmlx second)
 	t_copmlx	complex;
 
 	complex.x = (first.x * second.x) - (first.y * second.y);
-	complex.y = 2 * (first.x * second.y );
+	complex.y = 2 * (first.x * second.y);
 	return (complex);
 }
 

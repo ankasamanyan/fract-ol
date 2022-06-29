@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/28 19:03:18 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/06/29 20:07:08 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
 
 # define MAX_ITER 255
 
-# define MAX_X 1.2
-# define MIN_X -2.4
+// # define MAX_X 1.2
+// # define MIN_X -2.4
 
-# define MAX_Y 1
-# define MIN_Y -1
+// # define MAX_Y 1
+// # define MIN_Y -1
 
 enum {
 	ON_KEYDOWN = 2,
@@ -87,29 +87,24 @@ typedef struct s_copmlx
 	double	y;
 }	t_copmlx;
 
-/* Window  Management */
+// Window  Management 
 int				x_close(t_mlx *mlx);
 int				key_handler(int keycode, t_mlx *mlx);
 void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
-/* input */
+// input 
 int				input_check(int argc, char **argv, t_mlx *mlx);
-/* Mandelbrot set */
+// Mandelbrot set 
+void			init_mandelbrot(t_mlx *mlx);
 t_copmlx		screen_to_complex(t_mlx mlx, int x, int y);
 void			mandelbrot(t_mlx mlx, t_colour colour, int x, int y);
-void			draw( t_mlx mlx, t_colour colour);
-/* the Math */
+void			draw_fractol( t_mlx mlx, t_colour colour);
+// the Math
 t_copmlx		vector_add(t_copmlx first, t_copmlx second);
 t_copmlx		vector_multpl(t_copmlx first, t_copmlx second);
 t_copmlx		the_math(t_copmlx z, t_copmlx constant);
-/* trgb */
-int				create_trgb(unsigned char t, unsigned char r, unsigned char g, unsigned char b);
-unsigned char	get_t(int trgb);
-unsigned char	get_r(int trgb);
-unsigned char	get_g(int trgb);
-unsigned char	get_b(int trgb);
+// colours 
 int				get_colour(t_colour colour);
-/* colours */
-int	og_colours(t_colour colour, int x);
-int	some_other_colours(t_colour colour, int iter);
+int				og_colours(t_colour colour, int x);
+// int				other_colours(t_colour colour, int iter);
 
 #endif
