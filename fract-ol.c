@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fract-ol.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:10:35 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/25 18:32:49 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/06/28 18:46:26 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void	mandelbrot(t_mlx mlx, int x, int y)
+void	mandelbrot(t_mlx mlx, t_colour colour, int x, int y)
 {
 	t_copmlx	constant;
 	t_copmlx	complex;
@@ -56,10 +56,14 @@ void	mandelbrot(t_mlx mlx, int x, int y)
 	if (iter == MAX_ITER)
 		my_mlx_pixel_put(&mlx.img, x, y, 0x00000000);
 	else if (iter < MAX_ITER)
-		my_mlx_pixel_put(&mlx.img, x, y, 0x00C09CE0); 
+	{
+		// my_mlx_pixel_put(&mlx.img, x, y, og_colours(colour, iter));
+		my_mlx_pixel_put(&mlx.img, x, y, og_colours(colour, iter)); 
+	}
+	
 }
 
-void	draw( t_mlx mlx)
+void	draw( t_mlx mlx, t_colour colour)
 {
 	int 		x;
 	int 		y;
@@ -71,7 +75,7 @@ void	draw( t_mlx mlx)
 		y = 0;
 		while (y < HEIGHT)
 		{
-			mandelbrot(mlx, x, y);
+			mandelbrot(mlx, colour, x, y);
 			y++;
 		}
 		x++;
@@ -89,25 +93,10 @@ int main(int argc, char *argv[])
 	mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "Fract-ol");
 	mlx.img.img_ptr = mlx_new_image(mlx.mlx, WIDTH, HEIGHT);
 	mlx.img.data = mlx_get_data_addr(mlx.img.img_ptr, &mlx.img.bpp, &mlx.img.size_l, &mlx.img.endian);
-	//нарисовать изображение тут
-	draw(mlx);
+	draw(mlx, mlx.colour);
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img.img_ptr, 0, 0); 
 	mlx_hook(mlx.win, ON_DESTROY, 0, x_close, &mlx);
 	mlx_hook(mlx.win, ON_KEYDOWN, 0, key_handler, &mlx);
 	mlx_loop(mlx.mlx);
 	return 0;
 }
-
-//img = mlx_new_image(mlx, 1920, 1080);
-	// mlx_win = mlx_new_window(mlx, 1408, 760, "Hello world!");
-	// while (i < 100)
-	// {
-	// 	// j = i + 1;
-	// 	mlx_pixel_put(mlx, mlx_win, i, j, 0x000000FF);
-		
-	// 	i++;
-	// }
-	
-	// mlx_pixel_put(mlx, mlx_win, 100, 100, 0x000000FF);
-	
-	// mlx_pixel_put(mlx, mlx_win, 100, 100, 0x000000FF);

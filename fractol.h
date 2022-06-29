@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/25 18:38:32 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/06/28 19:03:18 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,15 @@ enum
 	K_UP = 126
 };
 
+typedef struct s_colour
+{
+	int	t;
+	int r;
+	int	g;
+	int	b;
+}	t_colour;
+
+
 typedef struct s_img
 {
 	void	*img_ptr;
@@ -56,24 +65,20 @@ typedef struct s_img
 	int		size_l;
 	int		bpp;
 	int		endian;
-	int		x;
-	int		y;
 }	t_img;
 
 typedef struct s_mlx
 {
-	void	*mlx;
-	void	*win;
-	int		max_iter;
-	int		type;
-	// double	center_x;
-	// double	center_y;
-	double	max_x;
-	double	min_x;
-	double	max_y;
-	double	min_y;
-	// int		scale;
-	t_img	img;
+	void		*mlx;
+	void		*win;
+	int			max_iter;
+	int			type;
+	double		max_x;
+	double		min_x;
+	double		max_y;
+	double		min_y;
+	t_img		img;
+	t_colour	colour;
 }	t_mlx;
 
 typedef struct s_copmlx
@@ -82,27 +87,29 @@ typedef struct s_copmlx
 	double	y;
 }	t_copmlx;
 
-int			x_close(t_mlx *mlx);
-int			key_handler(int keycode, t_mlx *mlx);
-void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
-int			input_check(int argc, char **argv, t_mlx *mlx);
-t_copmlx	screen_to_complex(t_mlx mlx, int x, int y);
-void	mandelbrot(t_mlx mlx, int x, int y);
-void		draw( t_mlx mlx);
-t_copmlx	vector_add(t_copmlx first, t_copmlx second);
-t_copmlx	vector_multpl(t_copmlx first, t_copmlx second);
-t_copmlx	the_math(t_copmlx z, t_copmlx constant);
-
-
-
-// typedef struct	s_data {
-// 	void	*mlx;
-// 	void	*win;
-// 	void	*img;
-// 	char	*addr;
-// 	int		bits_per_pixel;
-// 	int		line_length;
-// 	int		endian;
-// }				t_data;
+/* Window  Management */
+int				x_close(t_mlx *mlx);
+int				key_handler(int keycode, t_mlx *mlx);
+void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
+/* input */
+int				input_check(int argc, char **argv, t_mlx *mlx);
+/* Mandelbrot set */
+t_copmlx		screen_to_complex(t_mlx mlx, int x, int y);
+void			mandelbrot(t_mlx mlx, t_colour colour, int x, int y);
+void			draw( t_mlx mlx, t_colour colour);
+/* the Math */
+t_copmlx		vector_add(t_copmlx first, t_copmlx second);
+t_copmlx		vector_multpl(t_copmlx first, t_copmlx second);
+t_copmlx		the_math(t_copmlx z, t_copmlx constant);
+/* trgb */
+int				create_trgb(unsigned char t, unsigned char r, unsigned char g, unsigned char b);
+unsigned char	get_t(int trgb);
+unsigned char	get_r(int trgb);
+unsigned char	get_g(int trgb);
+unsigned char	get_b(int trgb);
+int				get_colour(t_colour colour);
+/* colours */
+int	og_colours(t_colour colour, int x);
+int	some_other_colours(t_colour colour, int iter);
 
 #endif

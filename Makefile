@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+         #
+#    By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/05 18:48:15 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/06/25 14:54:37 by akasaman         ###   ########.fr        #
+#    Updated: 2022/06/26 01:18:16 by ankasamanya      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
-SRC = fract-ol.c input.c the_math.c
+SRC = fract-ol.c input.c the_math.c trgb.c colour.c
 
 OBJ =	$(SRC:.c=.o)
 
