@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/07 17:08:01 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/07 19:29:27 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define HEIGHT 780
 
 # define MAX_ITER 255
-# define ZOOM_FACTOR 1.25
+# define ZOOM_FACTOR 0.9
 
 // # define MAX_X 1.2
 // # define MIN_X -2.4
@@ -105,8 +105,8 @@ int				input_check(int argc, char **argv, t_mlx *mlx);
 // Mandelbrot set 
 void			init_mandelbrot(t_mlx *mlx);
 t_copmlx		screen_to_complex(t_mlx *mlx, int x, int y);
-void			mandelbrot(t_mlx mlx, t_colour colour, int x, int y);
-void			draw_fractol( t_mlx mlx, t_colour colour);
+void			mandelbrot(t_mlx *mlx, t_colour colour, int x, int y);
+void			draw_fractol( t_mlx* mlx, t_colour colour);
 // The Math
 t_copmlx		vector_add(t_copmlx first, t_copmlx second);
 t_copmlx		vector_multpl(t_copmlx first, t_copmlx second);

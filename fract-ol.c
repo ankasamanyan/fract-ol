@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fract-ol.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:10:35 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/07 12:33:43 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/07 19:24:15 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void	draw_fractol( t_mlx mlx, t_colour colour)
+void	draw_fractol( t_mlx *mlx, t_colour colour)
 {
 	int 		x;
 	int 		y;
 	t_copmlx	complex;
-
+	mlx->img.img_ptr = mlx_new_image(mlx->mlx, WIDTH, HEIGHT);
+	mlx->img.data = mlx_get_data_addr(mlx->img.img_ptr, &mlx->img.bpp, &mlx->img.size_l, &mlx->img.endian);
 	x = 0;
 	while (x < WIDTH)
 	{
@@ -38,7 +39,8 @@ void	draw_fractol( t_mlx mlx, t_colour colour)
 		}
 		x++;
 	}
-	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img.img_ptr, 0, 0);
+	perror("Ziumadumadum\n");
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img_ptr, 0, 0);
 }
 
 
@@ -49,11 +51,11 @@ int main(int argc, char *argv[])
 	mlx.mlx = mlx_init(); //2560x1600
 	input_check(argc, argv, &mlx);
 	mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "Fract-ol");
-	mlx.img.img_ptr = mlx_new_image(mlx.mlx, WIDTH, HEIGHT);
-	mlx.img.data = mlx_get_data_addr(mlx.img.img_ptr, &mlx.img.bpp, &mlx.img.size_l, &mlx.img.endian);
-	draw_fractol(mlx, mlx.colour);
+	init_mandelbrot(&mlx);
+	draw_fractol(&mlx, mlx.colour);
+	
 	// zoom(mlx);
-	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img.img_ptr, 0, 0); 
+	// mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img.img_ptr, 0, 0); 
 	mlx_hook(mlx.win, ON_DESTROY, 0, x_close, &mlx);
 	mlx_hook(mlx.win, ON_KEYDOWN, 0, key_handler, &mlx);
 	mlx_mouse_hook(mlx.win, &mouse_handler, &mlx);
