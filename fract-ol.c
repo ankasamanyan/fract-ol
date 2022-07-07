@@ -6,11 +6,12 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:10:35 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/29 18:34:47 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/07 12:33:43 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
 
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 {
@@ -51,9 +52,12 @@ int main(int argc, char *argv[])
 	mlx.img.img_ptr = mlx_new_image(mlx.mlx, WIDTH, HEIGHT);
 	mlx.img.data = mlx_get_data_addr(mlx.img.img_ptr, &mlx.img.bpp, &mlx.img.size_l, &mlx.img.endian);
 	draw_fractol(mlx, mlx.colour);
+	// zoom(mlx);
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img.img_ptr, 0, 0); 
 	mlx_hook(mlx.win, ON_DESTROY, 0, x_close, &mlx);
 	mlx_hook(mlx.win, ON_KEYDOWN, 0, key_handler, &mlx);
+	mlx_mouse_hook(mlx.win, &mouse_handler, &mlx);
+	printf("halp\n");
 	mlx_loop(mlx.mlx);
 	return 0;
 }

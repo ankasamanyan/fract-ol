@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:34:55 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/29 18:35:13 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/07 16:48:42 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	mandelbrot(t_mlx mlx, t_colour colour, int x, int y)
 
 	iter = 0;
 	init_mandelbrot(&mlx);
-	constant = screen_to_complex(mlx, x, y);
+	constant = screen_to_complex(&mlx, x, y);
 	complex.x = 0.0;
 	complex.y = 0.0;
 	while (((pow(complex.x, 2) + pow(complex.y, 2)) < 4) && (iter < MAX_ITER))
@@ -43,5 +43,4 @@ void	mandelbrot(t_mlx mlx, t_colour colour, int x, int y)
 		// my_mlx_pixel_put(&mlx.img, x, y, og_colours(colour, iter));
 		my_mlx_pixel_put(&mlx.img, x, y, og_colours(colour, iter)); 
 	}
-	
 }

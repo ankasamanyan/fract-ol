@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/29 20:07:08 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/07 17:08:01 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define HEIGHT 780
 
 # define MAX_ITER 255
+# define ZOOM_FACTOR 1.25
 
 // # define MAX_X 1.2
 // # define MIN_X -2.4
@@ -67,6 +68,12 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
+typedef struct s_mouse_pos
+{
+	double x;
+	double y;
+}	t_mouse_pos;
+
 typedef struct s_mlx
 {
 	void		*mlx;
@@ -79,6 +86,8 @@ typedef struct s_mlx
 	double		min_y;
 	t_img		img;
 	t_colour	colour;
+	t_mouse_pos	mouse_pos;
+	// t_copmlx	complex;
 }	t_mlx;
 
 typedef struct s_copmlx
@@ -91,20 +100,27 @@ typedef struct s_copmlx
 int				x_close(t_mlx *mlx);
 int				key_handler(int keycode, t_mlx *mlx);
 void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
-// input 
+// Input 
 int				input_check(int argc, char **argv, t_mlx *mlx);
 // Mandelbrot set 
 void			init_mandelbrot(t_mlx *mlx);
-t_copmlx		screen_to_complex(t_mlx mlx, int x, int y);
+t_copmlx		screen_to_complex(t_mlx *mlx, int x, int y);
 void			mandelbrot(t_mlx mlx, t_colour colour, int x, int y);
 void			draw_fractol( t_mlx mlx, t_colour colour);
-// the Math
+// The Math
 t_copmlx		vector_add(t_copmlx first, t_copmlx second);
 t_copmlx		vector_multpl(t_copmlx first, t_copmlx second);
 t_copmlx		the_math(t_copmlx z, t_copmlx constant);
-// colours 
+// Colours 
 int				get_colour(t_colour colour);
 int				og_colours(t_colour colour, int x);
-// int				other_colours(t_colour colour, int iter);
+int				other_colours(t_colour colour, int iter);
+// Zoom
+int				getpxl(t_mlx *mlx, int x, int y);
+// int				mouse_handler(int button, int x, int y,t_mlx *mlx, t_mouse_pos *mouse_pos);
+int 			mouse_handler(int button, int x, int y, t_mlx *mlx, t_mouse_pos *mouse_pos);
+// int 			mouse_handler(int button, int x, int y, void *mlx);
+void			zoom(t_mlx *mlx, t_mouse_pos *mouse_pos, int in);
+
 
 #endif
