@@ -6,13 +6,13 @@
 #    By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/05 18:48:15 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/07/05 17:13:54 by ankasamanya      ###   ########.fr        #
+#    Updated: 2022/07/08 09:20:03 by ankasamanya      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
-SRC = fract-ol.c input.c the_math.c trgb.c colour.c hooks.c mandelbrot.c zoom.c
+SRC = fract-ol.c input.c the_math.c trgb.c colour.c hooks.c mandelbrot.c zoom.c move_it.c
 
 OBJ =	$(SRC:.c=.o)
 

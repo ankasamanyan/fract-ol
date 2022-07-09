@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/07 19:29:27 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/07/09 10:57:53 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define HEIGHT 780
 
 # define MAX_ITER 255
-# define ZOOM_FACTOR 0.9
+# define ZOOM_FACTOR 0.5
 
 // # define MAX_X 1.2
 // # define MIN_X -2.4
@@ -118,9 +118,9 @@ int				other_colours(t_colour colour, int iter);
 // Zoom
 int				getpxl(t_mlx *mlx, int x, int y);
 // int				mouse_handler(int button, int x, int y,t_mlx *mlx, t_mouse_pos *mouse_pos);
-int 			mouse_handler(int button, int x, int y, t_mlx *mlx, t_mouse_pos *mouse_pos);
+int 			mouse_handler(int button, int x, int y, t_mlx *mlx);
 // int 			mouse_handler(int button, int x, int y, void *mlx);
 void			zoom(t_mlx *mlx, t_mouse_pos *mouse_pos, int in);
-
+int				loop_hook_thingy(t_mlx *mlx);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   zoom.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 23:34:34 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/07 19:14:14 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/07/09 10:28:29 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ void	zoom(t_mlx *mlx, t_mouse_pos *mouse_pos, int in)
 	dist_from.max_x = mlx->max_x - mouse_pos->x;
 	dist_from.min_y = mouse_pos->y - mlx->min_y;
 	dist_from.max_y = mlx->max_y - mouse_pos->y;
-	// dist_from.min_x = mouse_pos->x - mlx->min_x;
-	// dist_from.max_x = mlx->max_x - mouse_pos->x;
-	// dist_from.min_y = mouse_pos->y - mlx->min_y;
-	// dist_from.max_y = mlx->max_y - mouse_pos->y;
 	if (in == 1)
 	{
 		mlx->min_x = mlx->min_x + dist_from.min_x * ZOOM_FACTOR;
@@ -48,18 +44,13 @@ void	zoom(t_mlx *mlx, t_mouse_pos *mouse_pos, int in)
 		mlx->min_y = mlx->min_y - dist_from.min_y * ZOOM_FACTOR;
 		mlx->max_y = mlx->max_y + dist_from.max_y * ZOOM_FACTOR;
 	}
-	
 }
 
+// void	move_it(t_mlx *mlx, t_mouse_pos *mouse_pos, int in)
+// {
+	
+// }
 
-
-
-
-
-
-// find out how to hook mouse events
-// find out which are the codes for mouse wheel
-// make the zooming function (calculate new x and y max and mins in relation to mouse position)
 
 
 
