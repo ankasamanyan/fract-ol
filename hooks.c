@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:12:47 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/09 11:29:56 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/10 10:09:44 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ int	key_handler(int keycode, t_mlx *mlx)
 		mlx_destroy_window(mlx->mlx, mlx->win);
 		exit(0);
 	}
-	// if (keycode == K_UP)
-	// {
-	// 	mlx->max_x = 
-	// 	mlx->min_y = 
-	// 	mlx->max_y = 
-	// 	mlx->min_y = 
-	// }
+	if (keycode == K_UP)
+		move_up(mlx);
+	if (keycode == K_DOWN)
+		move_down(mlx);
+	if (keycode == K_RIGHT)
+		move_right(mlx);
+	if (keycode == K_LEFT)
+		move_left(mlx);
 	//24 + plus
 	//27 - minus
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/09 10:57:53 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/10 10:08:43 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define WIDTH  1440
 # define HEIGHT 780
 
-# define MAX_ITER 255
+# define MAX_ITER 100
 # define ZOOM_FACTOR 0.5
 
 // # define MAX_X 1.2
@@ -78,7 +78,7 @@ typedef struct s_mlx
 {
 	void		*mlx;
 	void		*win;
-	int			max_iter;
+	int			iter;
 	int			type;
 	double		max_x;
 	double		min_x;
@@ -122,5 +122,10 @@ int 			mouse_handler(int button, int x, int y, t_mlx *mlx);
 // int 			mouse_handler(int button, int x, int y, void *mlx);
 void			zoom(t_mlx *mlx, t_mouse_pos *mouse_pos, int in);
 int				loop_hook_thingy(t_mlx *mlx);
+//move
+void			move_up(t_mlx *mlx);
+void			move_down(t_mlx *mlx);
+void			move_right(t_mlx *mlx);
+void			move_left(t_mlx *mlx);
 
 #endif
