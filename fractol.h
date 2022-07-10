@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/10 10:08:43 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/10 13:14:45 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,11 @@
 # include "Libft/libft.h"
 # include "mlx/mlx.h"
 
-# define WIDTH  1440
-# define HEIGHT 780
+# define WIDTH  1080 //960		//1440		//720		//1080
+# define HEIGHT 585 //640		//780		//390		//585
 
-# define MAX_ITER 100
+# define MAX_ITER 255
 # define ZOOM_FACTOR 0.5
-
-// # define MAX_X 1.2
-// # define MIN_X -2.4
-
-// # define MAX_Y 1
-// # define MIN_Y -1
 
 enum {
 	ON_KEYDOWN = 2,
@@ -117,12 +111,10 @@ int				og_colours(t_colour colour, int x);
 int				other_colours(t_colour colour, int iter);
 // Zoom
 int				getpxl(t_mlx *mlx, int x, int y);
-// int				mouse_handler(int button, int x, int y,t_mlx *mlx, t_mouse_pos *mouse_pos);
 int 			mouse_handler(int button, int x, int y, t_mlx *mlx);
-// int 			mouse_handler(int button, int x, int y, void *mlx);
 void			zoom(t_mlx *mlx, t_mouse_pos *mouse_pos, int in);
 int				loop_hook_thingy(t_mlx *mlx);
-//move
+// Move
 void			move_up(t_mlx *mlx);
 void			move_down(t_mlx *mlx);
 void			move_right(t_mlx *mlx);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colour.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 00:24:40 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/06/29 18:11:13 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/10 12:47:18 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int	get_colour(t_colour colour)
 int	og_colours(t_colour colour, int iter)
 {
 	int	trgb;
-	double	t;
+	double	x;
 	
-	t = (double)iter / MAX_ITER;
+	x = (double)iter / MAX_ITER;
 	colour.t = 0;
-	colour.r = 9.0 * (1.0 - t) * pow(t, 3.0) * 255;
-	colour.g = 15.0 * pow((1.0 - t), 2.0) * pow(t, 2.0) * 255; 
-	colour.b = 8.5 * pow((1.0 - t), 3.0) * t * 255;
+	colour.r = 9.0 * (1.0 - x) * pow(x, 3.0) * 255;
+	colour.g = 15.0 * pow((1.0 - x), 2.0) * pow(x, 2.0) * 255; 
+	colour.b = 8.5 * pow((1.0 - x), 3.0) * x * 255;
 	return (get_colour(colour));
 }
