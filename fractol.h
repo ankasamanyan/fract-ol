@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/12 02:09:55 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/12 04:26:38 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define WIDTH  1080 //960		//1440		//720		//1080
 # define HEIGHT 585 //640		//780		//390		//585
 
-# define MAX_ITER 30
+# define MAX_ITER 50
 # define ZOOM_FACTOR 0.5
 
 enum {
@@ -41,7 +41,9 @@ enum
 	K_LEFT = 123,
 	K_RIGHT = 124,
 	K_DOWN = 125,
-	K_UP = 126
+	K_UP = 126,
+	K_PLUS = 24,
+	K_MINUS = 27
 };
 
 typedef struct s_colour
@@ -79,6 +81,7 @@ typedef struct s_mlx
 	void		*mlx;
 	void		*win;
 	int			iter;
+	int			max_iter;
 	int			type;
 	double		max_x;
 	double		min_x;
@@ -109,8 +112,12 @@ double			my_abs(double d);
 // Colours 
 int				get_colour(t_colour colour);
 int				og_colours(t_colour colour, int x);
-int				other_colours(t_colour colour, int iter);
-int				otha_colours(t_colour colour, int iter);
+int				drugy_colours(t_colour colour, int iter);
+int				good_one_colours(t_colour colour, int iter);
+int				also_good_colours(t_colour colour, int iter);
+int				other_drugy_colours(t_colour colour, int iter);
+int				black_white_colours(t_colour colour, int iter);
+int				ukr_colours(t_colour colour, int iter);
 // Zoom
 int				getpxl(t_mlx *mlx, int x, int y);
 int 			mouse_handler(int button, int x, int y, t_mlx *mlx);
@@ -122,8 +129,7 @@ void			move_down(t_mlx *mlx);
 void			move_right(t_mlx *mlx);
 void			move_left(t_mlx *mlx);
 // Julia
-void	julia(t_mlx *mlx, t_colour colour, int x, int y);
-
+void			julia(t_mlx *mlx, t_colour colour, int x, int y);
 // Burning ship
-void	burningship(t_mlx *mlx, t_colour colour, int x, int y);
+void			burningship(t_mlx *mlx, t_colour colour, int x, int y);
 #endif

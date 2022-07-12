@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:10:35 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/12 02:10:27 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/12 04:20:22 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	draw_fractol( t_mlx *mlx, t_colour colour)
 		while (y < HEIGHT)
 		{
 			// burningship(mlx, colour, x, y);
-			// julia(mlx, colour, x, y);
-			mandelbrot(mlx, colour, x, y);
+			julia(mlx, colour, x, y);
+			// mandelbrot(mlx, colour, x, y);
 			y++;
 		}
 		x++;

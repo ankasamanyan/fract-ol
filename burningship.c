@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:50:03 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/11 16:54:58 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/12 02:29:54 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	burningship(t_mlx *mlx, t_colour colour, int x, int y)
 		my_mlx_pixel_put(&mlx->img, x, y, 0x00000000);
 	else if (mlx->iter < MAX_ITER)
 	{
-		// my_mlx_pixel_put(&mlx.img, x, y, og_colours(colour, iter));
-		my_mlx_pixel_put(&mlx->img, x, y, og_colours(colour, mlx->iter));
+		// my_mlx_pixel_put(&mlx->img, x, y, og_colours(colour, mlx->iter));
+		my_mlx_pixel_put(&mlx->img, x, y, drugy_colours(colour, mlx->iter));
 	}
 }
