@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:12:47 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/12 03:52:25 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/12 23:27:53 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,24 +51,23 @@ int	key_handler(int keycode, t_mlx *mlx)
 }
 
 int mouse_handler(int button, int x, int y, t_mlx *mlx)
-{	//посмотри в код хайзенберга если не стработает этот прототип;
-	int curr_mouse_pos_x;
-	int curr_mouse_pos_y;
-	// mlx_mouse_get_pos(mlx->win, &curr_mouse_pos_x, &curr_mouse_pos_y);
-	// printf("%d\n", curr_mouse_pos_x);
-	t_mouse_pos pos;
+{
+	int			curr_mouse_pos_x;
+	int			curr_mouse_pos_y;
+	t_mouse_pos	pos;
+
 	pos.x = curr_mouse_pos_x;
 	pos.y = curr_mouse_pos_y;
 	pos.x = (x / (double)WIDTH) * (mlx->max_x - mlx->min_x) + mlx->min_x;
 	pos.y = (y / (double)HEIGHT) * (mlx->max_y - mlx->min_y) + mlx->min_y;
 	if (button == 4 || button == 1)
 	{
-		zoom(mlx, &pos, 1);
+		zoom_calc(mlx, &pos, 1);
 		draw_fractol(mlx, mlx->colour);
 	}
 	if (button == 5 || button == 2)
 	{
-		zoom(mlx, &pos, 0);
+		zoom_calc(mlx, &pos, 0);
 		draw_fractol(mlx, mlx->colour);
 	}
 	return 0;

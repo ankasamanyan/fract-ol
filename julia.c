@@ -6,11 +6,19 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 16:53:48 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/12 04:23:32 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/12 19:25:35 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	julia_innit(t_mlx *mlx)
+{
+	mlx->max_x = 2;
+	mlx->min_x = -2;
+	mlx->max_y = 1.105;
+	mlx->min_y = -1.105;
+}
 
 void	julia(t_mlx *mlx, t_colour colour, int x, int y)
 {
@@ -21,12 +29,12 @@ void	julia(t_mlx *mlx, t_colour colour, int x, int y)
 
 	mlx->iter = 0;
 	//og_one //max_iter 50
-	constant.x = -0.79;
-	constant.y = 0.15;
+	// constant.x = -0.79;
+	// constant.y = 0.15;
 	
 	//medusa_one //max_iter 50
-	// constant.x = 0.3;
-	// constant.y = -0.01;
+	constant.x = 0.3;
+	constant.y = -0.01;
 	
 	//kinda_cool_one //max_iter 200
 	// constant.x = 0.28;
@@ -53,6 +61,6 @@ void	julia(t_mlx *mlx, t_colour colour, int x, int y)
 	else if (mlx->iter < MAX_ITER)
 	{
 		// my_mlx_pixel_put(&mlx->img, x, y, og_colours(colour, mlx->iter));
-		my_mlx_pixel_put(&mlx->img, x, y, ukr_colours(colour, mlx->iter));
+		my_mlx_pixel_put(&mlx->img, x, y, other_drugy_colours(colour, mlx->iter));
 	}
 }

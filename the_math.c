@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 14:34:38 by akasaman          #+#    #+#             */
-/*   Updated: 2022/07/11 00:09:10 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/12 22:49:37 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ t_copmlx	screen_to_complex(t_mlx *mlx, int x, int y)
 	return (complex);
 }
 
-double	my_abs(double d)
+double	ft_abs(double i)
 {
-	if (d >= 0)
-		return (d);
+	if (i >= 0)
+		return (i);
 	else
-		return (-d);
+		return (-1 * i);
 }
+
 // t_copmlx	vector_add(t_copmlx first, t_copmlx second)
 // {
 // 	t_copmlx	complex;

@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:10:35 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/12 04:20:22 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/12 19:26:43 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	draw_fractol( t_mlx *mlx, t_colour colour)
 		y = 0;
 		while (y < HEIGHT)
 		{
-			// burningship(mlx, colour, x, y);
-			julia(mlx, colour, x, y);
+			burningship(mlx, colour, x, y);
+			// julia(mlx, colour, x, y);
 			// mandelbrot(mlx, colour, x, y);
 			y++;
 		}
@@ -42,17 +42,18 @@ void	draw_fractol( t_mlx *mlx, t_colour colour)
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img_ptr, 0, 0);
 }
 
-
 int main(int argc, char *argv[])
 {
 	t_mlx	mlx;
-	
+
 	mlx.mlx = mlx_init(); //2560x1600
 	input_check(argc, argv, &mlx);
 	mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "Fract-ol");
 	mlx.img.img_ptr = mlx_new_image(mlx.mlx, WIDTH, HEIGHT);
 	mlx.img.data = mlx_get_data_addr(mlx.img.img_ptr, &mlx.img.bpp, &mlx.img.size_l, &mlx.img.endian);
-	init_mandelbrot(&mlx);
+	// init_mandelbrot(&mlx);
+	// julia_innit(&mlx);
+	burningship_init(&mlx);
 	draw_fractol(&mlx, mlx.colour);
 	mlx_hook(mlx.win, ON_DESTROY, 0, x_close, &mlx);
 	mlx_hook(mlx.win, ON_KEYDOWN, 0, key_handler, &mlx);

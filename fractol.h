@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/12 04:26:38 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/12 23:41:26 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define WIDTH  1080 //960		//1440		//720		//1080
 # define HEIGHT 585 //640		//780		//390		//585
 
-# define MAX_ITER 50
+# define MAX_ITER 100
 # define ZOOM_FACTOR 0.5
 
 enum {
@@ -96,19 +96,28 @@ typedef struct s_mlx
 // Window  Management 
 int				x_close(t_mlx *mlx);
 int				key_handler(int keycode, t_mlx *mlx);
+int 			mouse_handler(int button, int x, int y, t_mlx *mlx);
+int				loop_hook_thingy(t_mlx *mlx);
+// Drawing fractals
 void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
+void			draw_fractol( t_mlx* mlx, t_colour colour);
 // Input 
 int				input_check(int argc, char **argv, t_mlx *mlx);
 // Mandelbrot set 
-void			init_mandelbrot(t_mlx *mlx);
-t_copmlx		screen_to_complex(t_mlx *mlx, int x, int y);
+void			mandelbrot_init(t_mlx *mlx);
 void			mandelbrot(t_mlx *mlx, t_colour colour, int x, int y);
-void			draw_fractol( t_mlx* mlx, t_colour colour);
+// Julia set
+void			julia_innit(t_mlx *mlx);
+void			julia(t_mlx *mlx, t_colour colour, int x, int y);
+// Burning ship
+void			burningship_init(t_mlx *mlx);
+void			burningship(t_mlx *mlx, t_colour colour, int x, int y);
 // The Math
+double			ft_abs(double i);
+t_copmlx		screen_to_complex(t_mlx *mlx, int x, int y);
 t_copmlx		vector_add(t_copmlx first, t_copmlx second);
 t_copmlx		vector_multpl(t_copmlx first, t_copmlx second);
 t_copmlx		the_math(t_copmlx z, t_copmlx constant);
-double			my_abs(double d);
 // Colours 
 int				get_colour(t_colour colour);
 int				og_colours(t_colour colour, int x);
@@ -120,16 +129,10 @@ int				black_white_colours(t_colour colour, int iter);
 int				ukr_colours(t_colour colour, int iter);
 // Zoom
 int				getpxl(t_mlx *mlx, int x, int y);
-int 			mouse_handler(int button, int x, int y, t_mlx *mlx);
-void			zoom(t_mlx *mlx, t_mouse_pos *mouse_pos, int in);
-int				loop_hook_thingy(t_mlx *mlx);
-// Move
+void			zoom_calc(t_mlx *mlx, t_mouse_pos *mouse_pos, int in);
+// Move functions
 void			move_up(t_mlx *mlx);
 void			move_down(t_mlx *mlx);
 void			move_right(t_mlx *mlx);
 void			move_left(t_mlx *mlx);
-// Julia
-void			julia(t_mlx *mlx, t_colour colour, int x, int y);
-// Burning ship
-void			burningship(t_mlx *mlx, t_colour colour, int x, int y);
 #endif
