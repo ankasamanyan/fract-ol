@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:10:35 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/10 09:40:06 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/12 02:10:27 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	draw_fractol( t_mlx *mlx, t_colour colour)
 		y = 0;
 		while (y < HEIGHT)
 		{
+			// burningship(mlx, colour, x, y);
+			// julia(mlx, colour, x, y);
 			mandelbrot(mlx, colour, x, y);
 			y++;
 		}
@@ -55,7 +57,6 @@ int main(int argc, char *argv[])
 	mlx_hook(mlx.win, ON_DESTROY, 0, x_close, &mlx);
 	mlx_hook(mlx.win, ON_KEYDOWN, 0, key_handler, &mlx);
 	mlx_mouse_hook(mlx.win, &mouse_handler, &mlx);
-	mlx_loop_hook(mlx.mlx, &loop_hook_thingy, &mlx);
 	mlx_loop(mlx.mlx);
 	return 0;
 }

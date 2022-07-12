@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/10 13:14:45 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/07/12 02:09:55 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define WIDTH  1080 //960		//1440		//720		//1080
 # define HEIGHT 585 //640		//780		//390		//585
 
-# define MAX_ITER 255
+# define MAX_ITER 30
 # define ZOOM_FACTOR 0.5
 
 enum {
@@ -68,6 +68,12 @@ typedef struct s_mouse_pos
 	double y;
 }	t_mouse_pos;
 
+typedef struct s_copmlx
+{
+	double	x;
+	double	y;
+}	t_copmlx;
+
 typedef struct s_mlx
 {
 	void		*mlx;
@@ -81,14 +87,8 @@ typedef struct s_mlx
 	t_img		img;
 	t_colour	colour;
 	t_mouse_pos	mouse_pos;
-	// t_copmlx	complex;
+	t_copmlx	complex;
 }	t_mlx;
-
-typedef struct s_copmlx
-{
-	double	x;
-	double	y;
-}	t_copmlx;
 
 // Window  Management 
 int				x_close(t_mlx *mlx);
@@ -105,10 +105,12 @@ void			draw_fractol( t_mlx* mlx, t_colour colour);
 t_copmlx		vector_add(t_copmlx first, t_copmlx second);
 t_copmlx		vector_multpl(t_copmlx first, t_copmlx second);
 t_copmlx		the_math(t_copmlx z, t_copmlx constant);
+double			my_abs(double d);
 // Colours 
 int				get_colour(t_colour colour);
 int				og_colours(t_colour colour, int x);
 int				other_colours(t_colour colour, int iter);
+int				otha_colours(t_colour colour, int iter);
 // Zoom
 int				getpxl(t_mlx *mlx, int x, int y);
 int 			mouse_handler(int button, int x, int y, t_mlx *mlx);
@@ -119,5 +121,9 @@ void			move_up(t_mlx *mlx);
 void			move_down(t_mlx *mlx);
 void			move_right(t_mlx *mlx);
 void			move_left(t_mlx *mlx);
+// Julia
+void	julia(t_mlx *mlx, t_colour colour, int x, int y);
 
+// Burning ship
+void	burningship(t_mlx *mlx, t_colour colour, int x, int y);
 #endif

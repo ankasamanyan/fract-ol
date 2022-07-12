@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:12:47 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/10 12:25:19 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/07/10 14:19:31 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,4 @@ int mouse_handler(int button, int x, int y, t_mlx *mlx)
 		draw_fractol(mlx, mlx->colour);
 	}
 	return 0;
-}
-
-int	loop_hook_thingy(t_mlx *mlx)
-{
-	mlx_do_sync(mlx->mlx);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img_ptr, 0, 0); 
-	return (0);
 }

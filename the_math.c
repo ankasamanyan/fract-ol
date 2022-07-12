@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   the_math.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 14:34:38 by akasaman          #+#    #+#             */
-/*   Updated: 2022/07/10 12:48:33 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/07/11 00:09:10 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ t_copmlx	screen_to_complex(t_mlx *mlx, int x, int y)
 	return (complex);
 }
 
+double	my_abs(double d)
+{
+	if (d >= 0)
+		return (d);
+	else
+		return (-d);
+}
 // t_copmlx	vector_add(t_copmlx first, t_copmlx second)
 // {
 // 	t_copmlx	complex;
