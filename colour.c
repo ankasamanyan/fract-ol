@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 00:24:40 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/12 04:25:59 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/14 01:02:02 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	get_colour(t_colour colour)
 	return (trgb);
 }
 
-int	og_colours(t_colour colour, int iter)
+int	bernstein_colours(t_colour colour, int iter)
 {
 	int	trgb;
 	double	x;
@@ -32,7 +32,7 @@ int	og_colours(t_colour colour, int iter)
 	return (get_colour(colour));
 }
 
-int	drugy_colours(t_colour colour, int iter)
+int	hippy_colours(t_colour colour, int iter)
 {
 	double	x;
 

@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:50:03 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/12 23:35:12 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/14 00:58:26 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	burningship_init(t_mlx *mlx)
 	mlx->min_x = - 3.25;
 	mlx->max_y = 1.4;
 	mlx->min_y = -2.1;
+	mlx->set_func = &burningship;
 }
 
 void	burningship(t_mlx *mlx, t_colour colour, int x, int y)
@@ -42,6 +43,7 @@ void	burningship(t_mlx *mlx, t_colour colour, int x, int y)
 	else if (mlx->iter < MAX_ITER)
 	{
 		// my_mlx_pixel_put(&mlx->img, x, y, og_colours(colour, mlx->iter));
-		my_mlx_pixel_put(&mlx->img, x, y, drugy_colours(colour, mlx->iter));
+		// my_mlx_pixel_put(&mlx->img, x, y, hippy_colours(colour, mlx->iter));
+		my_mlx_pixel_put(&mlx->img, x, y, also_good_colours(colour, mlx->iter));
 	}
 }

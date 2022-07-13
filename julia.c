@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 16:53:48 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/12 19:25:35 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/13 19:00:07 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	julia_innit(t_mlx *mlx)
 	mlx->min_x = -2;
 	mlx->max_y = 1.105;
 	mlx->min_y = -1.105;
+	mlx->set_func = &julia;
 }
 
 void	julia(t_mlx *mlx, t_colour colour, int x, int y)

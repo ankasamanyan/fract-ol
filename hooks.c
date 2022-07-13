@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:12:47 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/13 01:05:11 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/14 00:21:14 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,6 @@ int	key_handler(int keycode, t_mlx *mlx)
 		move_right(mlx);
 	if (keycode == K_LEFT)
 		move_left(mlx);
-	// if (keycode == K_PLUS)
-	// {
-	// 	mlx->max_iter += 20;
-	// 	draw_fractol(mlx, mlx->colour);
-	// }
-	// if (keycode == K_MINUS)
-	// {
-	// 	if (mlx->max_iter > 0)
-	// 	{
-	// 		mlx->max_iter -= 20;
-	// 		draw_fractol(mlx, mlx->colour);
-	// 	}
-	// }
 	return (0);
 }
 

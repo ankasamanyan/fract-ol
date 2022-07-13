@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/13 18:32:00 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/14 00:59:24 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define WIDTH  1080 //960		//1440		//720		//1080
 # define HEIGHT 585 //640		//780		//390		//585
 
-# define MAX_ITER 200
+# define MAX_ITER 150
 # define ZOOM_FACTOR 0.5
 
 typedef struct s_mlx	t_mlx;
@@ -99,7 +99,7 @@ typedef struct s_mlx
 	t_colour	colour;
 	t_mouse_pos	mouse_pos;
 	t_copmlx	complex;
-	void (*func)(t_mlx *, t_colour , int, int);
+	void		(*set_func)(t_mlx *, t_colour , int, int);
 }	t_mlx;
 
 // Window  Management 
@@ -114,6 +114,7 @@ void			draw_fractol( t_mlx* mlx, t_colour colour);
 void			init(char **argv, t_mlx *mlx);
 int				input_check(int argc, char **argv, t_mlx *mlx);
 void			print_message(void);
+int				argc_check(int argc, char **argv, t_mlx *mlx);
 // Mandelbrot set 
 void			mandelbrot_init(t_mlx *mlx);
 void			mandelbrot(t_mlx *mlx, t_colour colour, int x, int y);
@@ -131,11 +132,11 @@ t_copmlx		vector_multpl(t_copmlx first, t_copmlx second);
 t_copmlx		the_math(t_copmlx z, t_copmlx constant);
 // Colours 
 int				get_colour(t_colour colour);
-int				og_colours(t_colour colour, int x);
+int				bernstein_colours(t_colour colour, int x);
+int				hippy_colours(t_colour colour, int iter);
+int				good_one_colours(t_colour colour, int iter); //pastel 
+int				also_good_colours(t_colour colour, int iter); //acid
 int				drugy_colours(t_colour colour, int iter);
-int				good_one_colours(t_colour colour, int iter);
-int				also_good_colours(t_colour colour, int iter);
-int				other_drugy_colours(t_colour colour, int iter);
 int				black_white_colours(t_colour colour, int iter);
 int				ukr_colours(t_colour colour, int iter);
 // Zoom

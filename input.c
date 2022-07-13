@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:04:37 by akasaman          #+#    #+#             */
-/*   Updated: 2022/07/13 17:39:01 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/13 20:24:18 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,37 @@
 
 int	input_check(int argc, char **argv, t_mlx *mlx)
 {
-	t_input	*input;
-	ft_printf("check argc\n");
+	argc_check(argc, argv, mlx);
+	return 0;
+}
+
+int	argc_check(int argc, char **argv, t_mlx *mlx)
+{
 	if (argc < 3)
 	{
 		print_message();
 		exit(0);
 	}
-	// ft_printf("argc checked\n");
-	// ft_printf("put name index in struct\n");
-	// ft_printf("%s\n", argv[1]);
-	// ft_printf("%i\n", ft_strncmp(argv[1], "-m", ft_strlen(argv[1])));
-	// if ((ft_strncmp(argv[1], "-m", ft_strlen(argv[1]))) == 0)
-	// {
-	// 	ft_printf("Man is not in struct yet\n");	
-	// 	input->set_name = 1;
-	// 	ft_printf("Man is in struct\n");	
-	// }
-	// else if (ft_strncmp(argv[1], "-j", ft_strlen(argv[1])))
-	// 	input->set_name = 2;
-	// else if (ft_strncmp(argv[1], "-b", ft_strlen(argv[1])))
-	// 	input->set_name = 3;
-	// ft_printf("Indexes are in structs\n");
-    return 0;
+	if ((ft_strncmp(argv[1], "-j", ft_strlen(argv[1])) == 0))
+	{
+		if ( argc == 4)
+			return 0;
+		print_message();
+		exit(0);
+	}
+	if (argc != 3 )
+    {
+		print_message();
+		exit(0);
+	}
+	return(0);
 }
+
+// int	color_check(int argc, char **argv, t_mlx *mlx)
+// {
+	
+// 	return (0);
+// }
 
 void	print_message(void)
 {
