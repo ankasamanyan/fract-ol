@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:12:47 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/12 23:27:53 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/13 01:05:11 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	x_close(t_mlx *mlx)
 
 int	key_handler(int keycode, t_mlx *mlx)
 {
-	// printf("%i\n", keycode);
 	if (keycode == K_ESC)
 	{
 		mlx_destroy_window(mlx->mlx, mlx->win);

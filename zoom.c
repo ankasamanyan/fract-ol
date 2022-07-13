@@ -6,13 +6,12 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 23:34:34 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/12 23:26:13 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/13 01:24:12 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-// int		mlx_mouse_get_pos(void *win_ptr, int *x, int *y);
 int	getpxl(t_mlx *mlx, int x, int y)
 {
 	int	*pos;
