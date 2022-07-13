@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/13 01:13:40 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/13 18:32:00 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@
 # define WIDTH  1080 //960		//1440		//720		//1080
 # define HEIGHT 585 //640		//780		//390		//585
 
-# define MAX_ITER 100
+# define MAX_ITER 200
 # define ZOOM_FACTOR 0.5
+
+typedef struct s_mlx	t_mlx;
 
 enum {
 	ON_KEYDOWN = 2,
@@ -46,6 +48,13 @@ enum
 	K_MINUS = 27
 };
 
+typedef struct s_input
+{
+	int	set_name;
+	int	colour;
+	int	julia_set_number;
+}	t_input;
+
 typedef struct s_colour
 {
 	int	t;
@@ -53,7 +62,6 @@ typedef struct s_colour
 	int	g;
 	int	b;
 }	t_colour;
-
 
 typedef struct s_img
 {
@@ -91,6 +99,7 @@ typedef struct s_mlx
 	t_colour	colour;
 	t_mouse_pos	mouse_pos;
 	t_copmlx	complex;
+	void (*func)(t_mlx *, t_colour , int, int);
 }	t_mlx;
 
 // Window  Management 
@@ -102,7 +111,9 @@ int				loop_hook_thingy(t_mlx *mlx);
 void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
 void			draw_fractol( t_mlx* mlx, t_colour colour);
 // Input 
+void			init(char **argv, t_mlx *mlx);
 int				input_check(int argc, char **argv, t_mlx *mlx);
+void			print_message(void);
 // Mandelbrot set 
 void			mandelbrot_init(t_mlx *mlx);
 void			mandelbrot(t_mlx *mlx, t_colour colour, int x, int y);

@@ -6,7 +6,7 @@
 #    By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/05 01:24:17 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/07/11 16:01:50 by ankasamanya      ###   ########.fr        #
+#    Updated: 2022/07/13 14:30:17 by ankasamanya      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ RM = rm -rf
 all: $(NAME) $(BONUS)
 
 $(NAME): $(OBJ)
-	ar rsc $(NAME) $(OBJ)
+	@ar rsc $(NAME) $(OBJ)
 
 clean:
 	$(RM) $(OBJ) $(BONUS_OBJ)
@@ -93,6 +93,6 @@ fclean: clean
 re: fclean all
 
 bonus: $(OBJ) $(BONUS_OBJ)
-	ar rsc $(NAME) $(OBJ) $(BONUS_OBJ)
+	@ar rsc $(NAME) $(OBJ) $(BONUS_OBJ)
 
 .PHONY: all clean fclean re bonus

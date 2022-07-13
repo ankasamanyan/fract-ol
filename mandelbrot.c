@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:34:55 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/12 23:21:47 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/13 18:31:49 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ void	mandelbrot_init(t_mlx *mlx)
 {
 	mlx->max_x = 1.2;
 	mlx->min_x = -2.4;
-	mlx->max_y = 1.75;
-	mlx->min_y = -0.125;
+	mlx->max_y = 1;
+	mlx->min_y = -1;
+	mlx->func = &mandelbrot;
 }
 
 void	mandelbrot(t_mlx *mlx, t_colour colour, int x, int y)
