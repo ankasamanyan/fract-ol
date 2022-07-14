@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 01:23:23 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/13 13:23:16 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/14 20:16:37 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <stdlib.h>
 # include "ft_printf/ft_printf.h"
 # include "get_next_line/get_next_line.h"
-
-#define PRINT_RED "\033[0;31m"
 
 typedef struct s_list
 {

@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/14 19:40:58 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/14 23:59:24 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ typedef struct s_mlx
 // Window  Management 
 int				x_close(t_mlx *mlx);
 int				key_handler(int keycode, t_mlx *mlx);
+int				colour_key(t_mlx *mlx);
 int				mouse_handler(int button, int x, int y, t_mlx *mlx);
-int				loop_hook_thingy(t_mlx *mlx);
 // Drawing fractals
 void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
 void			draw_fractol(t_mlx *mlx, t_colour colour);

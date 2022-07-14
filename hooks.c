@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:12:47 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/14 19:15:40 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/15 00:00:32 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,37 @@ int	key_handler(int keycode, t_mlx *mlx)
 		move_right(mlx);
 	if (keycode == K_LEFT)
 		move_left(mlx);
+	if (keycode == K_PLUS)
+		colour_key(mlx);
+	return (0);
+}
+
+int	colour_key(t_mlx *mlx)
+{
+	if (mlx->colour_func == &bernstein_colours)
+	{
+		mlx->colour_func = &hippy_colours;
+		mlx->draw_func(mlx, mlx->colour);
+		return (0);
+	}
+	else if (mlx->colour_func == &hippy_colours)
+	{
+		mlx->colour_func = &acid_colours;
+		mlx->draw_func(mlx, mlx->colour);
+		return (0);
+	}
+	else if (mlx->colour_func == &acid_colours)
+	{
+		mlx->colour_func = &pastel_colours;
+		mlx->draw_func(mlx, mlx->colour);
+		return (0);
+	}
+	else if (mlx->colour_func == &pastel_colours)
+	{
+		mlx->colour_func = &bernstein_colours;
+		mlx->draw_func(mlx, mlx->colour);
+		return (0);
+	}
 	return (0);
 }
 
