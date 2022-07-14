@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 00:24:40 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/14 15:27:46 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/14 17:56:05 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,14 @@ int	black_white_colours(t_colour colour, int iter)
 // 	return (get_colour(colour));
 // }
 
-int	ukr_colours(t_colour colour, int iter)
-{
-	double	x;
+// int	ukr_colours(t_colour colour, int iter)
+// {
+// 	double	x;
 
-	x = (double)iter / MAX_ITER;
-	colour.t = 0;
-	colour.r = cos(0.16 * iter + 4) * 127.5 + 127.5;
-	colour.g = cos(0.16 * iter + 4) * 127.5 + 127.5;
-	colour.b = cos(0.16 * iter + 4) * x * 127.5 + 127.5;
-	return (get_colour(colour));
-}
+// 	x = (double)iter / MAX_ITER;
+// 	colour.t = 0;
+// 	colour.r = cos(0.16 * iter + 4) * 127.5 + 127.5;
+// 	colour.g = cos(0.16 * iter + 4) * 127.5 + 127.5;
+// 	colour.b = cos(0.16 * iter + 4) * x * 127.5 + 127.5;
+// 	return (get_colour(colour));
+// }

@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/14 15:39:27 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/14 18:52:28 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define WIDTH  1080 //960		//1440		//720		//1080
 # define HEIGHT 585 //640		//780		//390		//585
 
-# define MAX_ITER 100
+# define MAX_ITER 200
 # define ZOOM_FACTOR 0.5
 
 typedef struct s_mlx	t_mlx;
@@ -95,12 +95,13 @@ typedef struct s_mlx
 	double		min_x;
 	double		max_y;
 	double		min_y;
+	t_copmlx	julia_const;
 	t_img		img;
 	t_colour	colour;
 	t_mouse_pos	mouse_pos;
 	t_copmlx	complex;
 	void		(*set_func)(t_mlx *, t_colour , int, int);
-	void		(*colour_func)(t_colour, int);
+	int			(*colour_func)(t_colour, int);
 	void		(*draw_func)(t_mlx *, t_colour);
 }	t_mlx;
 
@@ -117,11 +118,13 @@ void			init(char **argv, t_mlx *mlx);
 int				input_check(int argc, char **argv, t_mlx *mlx);
 void			print_message(void);
 int				argc_check(int argc, char **argv, t_mlx *mlx);
+void			color_check(int argc, char **argv, t_mlx *mlx);
+void			julia_set_check(int argc, char **argv, t_mlx *mlx);
+void			number_check(int argc, char **argv, t_mlx *mlx);
 // Mandelbrot set 
 void			mandelbrot_init(t_mlx *mlx);
 void			mandelbrot(t_mlx *mlx, t_colour colour, int x, int y);
 void			draw_mandelbrot( t_mlx *mlx, t_colour colour);
-
 // Julia set
 void			julia_innit(t_mlx *mlx);
 void			julia(t_mlx *mlx, t_colour colour, int x, int y);
@@ -130,7 +133,6 @@ void			draw_julia( t_mlx *mlx, t_colour colour);
 void			burningship_init(t_mlx *mlx);
 void			burningship(t_mlx *mlx, t_colour colour, int x, int y);
 void			draw_burninghsip( t_mlx *mlx, t_colour colour);
-
 // The Math
 double			ft_abs(double i);
 t_copmlx		screen_to_complex(t_mlx *mlx, int x, int y);

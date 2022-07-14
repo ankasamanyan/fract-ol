@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 16:53:48 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/14 15:41:08 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/14 18:12:23 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,20 @@ void	julia(t_mlx *mlx, t_colour colour, int x, int y)
 	//dragon_one //max_iter 50
 	// constant.x = -0.79;
 	// constant.y = 0.15;
-	
-	//medusa_one //max_iter 50
-	constant.x = 0.3;
-	constant.y = -0.01;
-	
+
+	// //medusa_one //max_iter 50
+	// constant.x = 0.3;
+	// constant.y = -0.01;
+
 	//kinda_cool_one //max_iter 200
 	// constant.x = 0.28;
 	// constant.y = 0.008;
-	
+
 	//sawblades_one //max_iter 50
 	// constant.x = -0.4;
 	// constant.y = -0.59;
+	constant = mlx->julia_const;
 
-	
 	complex = screen_to_complex(mlx, x, y);
 	while ((complex.x * complex.x + complex.y * complex.y < 4) && (mlx->iter < MAX_ITER))
 	{
@@ -59,10 +59,7 @@ void	julia(t_mlx *mlx, t_colour colour, int x, int y)
 	if (mlx->iter == MAX_ITER)
 		my_mlx_pixel_put(&mlx->img, x, y, 0x00000000);
 	else if (mlx->iter < MAX_ITER)
-	{
-		my_mlx_pixel_put(&mlx->img, x, y, bernstein_colours(colour, mlx->iter));
-		// my_mlx_pixel_put(&mlx->img, x, y, also_good_colours(colour, mlx->iter));
-	}
+		my_mlx_pixel_put(&mlx->img, x, y, mlx->colour_func(colour, mlx->iter));
 }
 
 void	draw_julia( t_mlx *mlx, t_colour colour)
@@ -78,7 +75,6 @@ void	draw_julia( t_mlx *mlx, t_colour colour)
 		y = 0;
 		while (y < HEIGHT)
 		{
-			// mlx->set_func(mlx, colour, x, y);
 			julia(mlx, colour, x, y);
 			y++;
 		}

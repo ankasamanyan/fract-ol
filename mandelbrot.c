@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:34:55 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/14 14:07:48 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/14 17:32:54 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	mandelbrot(t_mlx *mlx, t_colour colour, int x, int y)
 	else if (mlx->iter < MAX_ITER)
 	{
 		// my_mlx_pixel_put(&mlx->img, x, y, drugy_colours(colour, mlx->iter));
-		my_mlx_pixel_put(&mlx->img, x, y, hippy_colours(colour, mlx->iter));
+		my_mlx_pixel_put(&mlx->img, x, y, mlx->colour_func(colour, mlx->iter));
 		// my_mlx_pixel_put(&mlx->img, x, y, also_good_colours(colour, mlx->iter));
 		// my_mlx_pixel_put(&mlx->img, x, y, other_drugy_colours(colour, mlx->iter));
 	}
