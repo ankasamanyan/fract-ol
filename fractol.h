@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/14 18:52:28 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/14 19:35:29 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include "Libft/libft.h"
 # include "mlx/mlx.h"
 
-# define WIDTH  1080 //960		//1440		//720		//1080
-# define HEIGHT 585 //640		//780		//390		//585
+# define WIDTH  1080
+# define HEIGHT 585
 
 # define MAX_ITER 200
 # define ZOOM_FACTOR 0.5
@@ -58,7 +58,7 @@ typedef struct s_input
 typedef struct s_colour
 {
 	int	t;
-	int r;
+	int	r;
 	int	g;
 	int	b;
 }	t_colour;
@@ -74,8 +74,8 @@ typedef struct s_img
 
 typedef struct s_mouse_pos
 {
-	double x;
-	double y;
+	double	x;
+	double	y;
 }	t_mouse_pos;
 
 typedef struct s_copmlx
@@ -100,7 +100,6 @@ typedef struct s_mlx
 	t_colour	colour;
 	t_mouse_pos	mouse_pos;
 	t_copmlx	complex;
-	void		(*set_func)(t_mlx *, t_colour , int, int);
 	int			(*colour_func)(t_colour, int);
 	void		(*draw_func)(t_mlx *, t_colour);
 }	t_mlx;
@@ -108,11 +107,11 @@ typedef struct s_mlx
 // Window  Management 
 int				x_close(t_mlx *mlx);
 int				key_handler(int keycode, t_mlx *mlx);
-int 			mouse_handler(int button, int x, int y, t_mlx *mlx);
+int				mouse_handler(int button, int x, int y, t_mlx *mlx);
 int				loop_hook_thingy(t_mlx *mlx);
 // Drawing fractals
 void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
-void			draw_fractol( t_mlx* mlx, t_colour colour);
+void			draw_fractol(t_mlx *mlx, t_colour colour);
 // Input 
 void			init(char **argv, t_mlx *mlx);
 int				input_check(int argc, char **argv, t_mlx *mlx);

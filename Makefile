@@ -6,15 +6,15 @@
 #    By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/05 18:48:15 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/07/13 15:59:49 by ankasamanya      ###   ########.fr        #
+#    Updated: 2022/07/14 19:07:07 by ankasamanya      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
 SRC =	fract-ol.c input.c the_math.c \
-		colour.c hooks.c mandelbrot.c \
-		zoom.c move_it.c julia.c burningship.c
+		colour.c hooks.c mandelbrot.c zoom.c \
+		move_it.c julia.c burningship.c mlx_random.c
 
 OBJ =	$(SRC:.c=.o)
 
