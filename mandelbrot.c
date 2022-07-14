@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:34:55 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/14 01:02:39 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/14 14:07:48 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	mandelbrot_init(t_mlx *mlx)
 	mlx->min_x = -2.4;
 	mlx->max_y = 1;
 	mlx->min_y = -1;
-	mlx->set_func = &mandelbrot;
+	// mlx->set_func = &mandelbrot;
+	mlx->draw_func = &draw_mandelbrot;
 }
 
 void	mandelbrot(t_mlx *mlx, t_colour colour, int x, int y)
@@ -43,9 +44,30 @@ void	mandelbrot(t_mlx *mlx, t_colour colour, int x, int y)
 		my_mlx_pixel_put(&mlx->img, x, y, 0x00000000);
 	else if (mlx->iter < MAX_ITER)
 	{
-		// my_mlx_pixel_put(&mlx->img, x, y, bernstein_colours(colour, mlx->iter));
-		// my_mlx_pixel_put(&mlx->img, x, y, hippy_colours(colour, mlx->iter));
+		// my_mlx_pixel_put(&mlx->img, x, y, drugy_colours(colour, mlx->iter));
+		my_mlx_pixel_put(&mlx->img, x, y, hippy_colours(colour, mlx->iter));
 		// my_mlx_pixel_put(&mlx->img, x, y, also_good_colours(colour, mlx->iter));
 		// my_mlx_pixel_put(&mlx->img, x, y, other_drugy_colours(colour, mlx->iter));
 	}
+}
+
+void	draw_mandelbrot( t_mlx *mlx, t_colour colour)
+{
+	int 		x;
+	int 		y;
+	t_copmlx	complex;
+	t_input		input;
+
+	x = 0;
+	while (x < WIDTH)
+	{
+		y = 0;
+		while (y < HEIGHT)
+		{
+			mandelbrot(mlx, colour, x, y);
+			y++;
+		}
+		x++;
+	}
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img_ptr, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:12:47 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/14 00:21:14 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/14 13:21:23 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,14 @@ int mouse_handler(int button, int x, int y, t_mlx *mlx)
 	if (button == 4 || button == 1)
 	{
 		zoom_calc(mlx, &pos, 1);
-		draw_fractol(mlx, mlx->colour);
+		// draw_fractol(mlx, mlx->colour);
+		mlx->draw_func(mlx, mlx->colour);
 	}
 	if (button == 5 || button == 2)
 	{
 		zoom_calc(mlx, &pos, 0);
-		draw_fractol(mlx, mlx->colour);
+		// draw_fractol(mlx, mlx->colour);
+		mlx->draw_func(mlx, mlx->colour);
 	}
 	return 0;
 }

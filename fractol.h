@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/14 00:59:24 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/14 15:39:27 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define WIDTH  1080 //960		//1440		//720		//1080
 # define HEIGHT 585 //640		//780		//390		//585
 
-# define MAX_ITER 150
+# define MAX_ITER 100
 # define ZOOM_FACTOR 0.5
 
 typedef struct s_mlx	t_mlx;
@@ -100,6 +100,8 @@ typedef struct s_mlx
 	t_mouse_pos	mouse_pos;
 	t_copmlx	complex;
 	void		(*set_func)(t_mlx *, t_colour , int, int);
+	void		(*colour_func)(t_colour, int);
+	void		(*draw_func)(t_mlx *, t_colour);
 }	t_mlx;
 
 // Window  Management 
@@ -118,12 +120,17 @@ int				argc_check(int argc, char **argv, t_mlx *mlx);
 // Mandelbrot set 
 void			mandelbrot_init(t_mlx *mlx);
 void			mandelbrot(t_mlx *mlx, t_colour colour, int x, int y);
+void			draw_mandelbrot( t_mlx *mlx, t_colour colour);
+
 // Julia set
 void			julia_innit(t_mlx *mlx);
 void			julia(t_mlx *mlx, t_colour colour, int x, int y);
+void			draw_julia( t_mlx *mlx, t_colour colour);
 // Burning ship
 void			burningship_init(t_mlx *mlx);
 void			burningship(t_mlx *mlx, t_colour colour, int x, int y);
+void			draw_burninghsip( t_mlx *mlx, t_colour colour);
+
 // The Math
 double			ft_abs(double i);
 t_copmlx		screen_to_complex(t_mlx *mlx, int x, int y);
@@ -134,10 +141,10 @@ t_copmlx		the_math(t_copmlx z, t_copmlx constant);
 int				get_colour(t_colour colour);
 int				bernstein_colours(t_colour colour, int x);
 int				hippy_colours(t_colour colour, int iter);
-int				good_one_colours(t_colour colour, int iter); //pastel 
-int				also_good_colours(t_colour colour, int iter); //acid
-int				drugy_colours(t_colour colour, int iter);
+int				pastel_colours(t_colour colour, int iter); //pastel //good_one
+int				acid_colours(t_colour colour, int iter); //acid //also_good_one
 int				black_white_colours(t_colour colour, int iter);
+int				drugy_colours(t_colour colour, int iter);
 int				ukr_colours(t_colour colour, int iter);
 // Zoom
 int				getpxl(t_mlx *mlx, int x, int y);
