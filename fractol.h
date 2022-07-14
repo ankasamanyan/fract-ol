@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/14 19:35:29 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/14 19:40:58 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void			print_message(void);
 int				argc_check(int argc, char **argv, t_mlx *mlx);
 void			color_check(int argc, char **argv, t_mlx *mlx);
 void			julia_set_check(int argc, char **argv, t_mlx *mlx);
-void			number_check(int argc, char **argv, t_mlx *mlx);
+int				number_check(int argc, char **argv, t_mlx *mlx);
 // Mandelbrot set 
 void			mandelbrot_init(t_mlx *mlx);
 void			mandelbrot(t_mlx *mlx, t_colour colour, int x, int y);
