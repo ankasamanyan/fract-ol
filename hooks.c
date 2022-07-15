@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:12:47 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/15 00:00:32 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/15 13:35:47 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,33 +38,33 @@ int	key_handler(int keycode, t_mlx *mlx)
 	return (0);
 }
 
-int	colour_key(t_mlx *mlx)
+void	colour_key(t_mlx *mlx)
 {
 	if (mlx->colour_func == &bernstein_colours)
 	{
 		mlx->colour_func = &hippy_colours;
 		mlx->draw_func(mlx, mlx->colour);
-		return (0);
 	}
 	else if (mlx->colour_func == &hippy_colours)
 	{
 		mlx->colour_func = &acid_colours;
 		mlx->draw_func(mlx, mlx->colour);
-		return (0);
 	}
 	else if (mlx->colour_func == &acid_colours)
 	{
+		mlx->colour_func = &black_white_colours;
+		mlx->draw_func(mlx, mlx->colour);
+	}
+	else if (mlx->colour_func == &black_white_colours)
+	{
 		mlx->colour_func = &pastel_colours;
 		mlx->draw_func(mlx, mlx->colour);
-		return (0);
 	}
 	else if (mlx->colour_func == &pastel_colours)
 	{
 		mlx->colour_func = &bernstein_colours;
 		mlx->draw_func(mlx, mlx->colour);
-		return (0);
 	}
-	return (0);
 }
 
 int	mouse_handler(int button, int x, int y, t_mlx *mlx)
