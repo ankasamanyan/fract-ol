@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:12:47 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/15 13:35:47 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/15 13:44:25 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	key_handler(int keycode, t_mlx *mlx)
 		move_right(mlx);
 	if (keycode == K_LEFT)
 		move_left(mlx);
-	if (keycode == K_PLUS)
+	if (keycode == K_C)
 		colour_key(mlx);
 	return (0);
 }

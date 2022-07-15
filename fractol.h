@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/15 13:36:19 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/15 13:44:14 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ enum
 	K_DOWN = 125,
 	K_UP = 126,
 	K_PLUS = 24,
-	K_MINUS = 27
+	K_MINUS = 27,
+	K_C = 8
 };
 
 typedef struct s_input
