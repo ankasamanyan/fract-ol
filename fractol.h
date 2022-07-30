@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:46:27 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/15 13:44:14 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/19 22:04:24 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@
 
 # define WIDTH  1080
 # define HEIGHT 585
-
-# define MAX_ITER 200
+// # define MAX_ITER mlx->max_iter
 # define ZOOM_FACTOR 0.5
 
 typedef struct s_mlx	t_mlx;
@@ -101,15 +100,17 @@ typedef struct s_mlx
 	t_colour	colour;
 	t_mouse_pos	mouse_pos;
 	t_copmlx	complex;
-	int			(*colour_func)(t_colour, int);
+	int			(*colour_func)(t_mlx *, int);
 	void		(*draw_func)(t_mlx *, t_colour);
 }	t_mlx;
 
 // Window  Management 
 int				x_close(t_mlx *mlx);
 int				key_handler(int keycode, t_mlx *mlx);
-void			colour_key(t_mlx *mlx);
 int				mouse_handler(int button, int x, int y, t_mlx *mlx);
+void			iter_change(t_mlx *mlx, int yes);
+int				loop_hook_thingy(t_mlx *mlx);
+void			colour_key(t_mlx *mlx);
 // Drawing fractals
 void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
 void			draw_fractol(t_mlx *mlx, t_colour colour);
@@ -141,13 +142,13 @@ t_copmlx		vector_multpl(t_copmlx first, t_copmlx second);
 t_copmlx		the_math(t_copmlx z, t_copmlx constant);
 // Colours 
 int				get_colour(t_colour colour);
-int				bernstein_colours(t_colour colour, int x);
-int				hippy_colours(t_colour colour, int iter);
-int				pastel_colours(t_colour colour, int iter); //pastel //good_one
-int				acid_colours(t_colour colour, int iter); //acid //also_good_one
-int				black_white_colours(t_colour colour, int iter);
-int				drugy_colours(t_colour colour, int iter);
-int				ukr_colours(t_colour colour, int iter);
+int				bernstein_colours(t_mlx *mlx, int x);
+int				hippy_colours(t_mlx *mlx, int iter);
+int				pastel_colours(t_mlx *mlx, int iter); //pastel //good_one
+int				acid_colours(t_mlx *mlx, int iter); //acid //also_good_one
+int				black_white_colours(t_mlx *mlx, int iter);
+int				drugy_colours(t_mlx *mlx, int iter);
+int				ukr_colours(t_mlx *mlx, int iter);
 // Zoom
 int				getpxl(t_mlx *mlx, int x, int y);
 void			zoom_calc(t_mlx *mlx, t_mouse_pos *mouse_pos, int in);

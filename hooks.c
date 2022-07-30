@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:12:47 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/15 13:44:25 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/19 21:16:10 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ int	x_close(t_mlx *mlx)
 {
 	mlx_destroy_window(mlx->mlx, mlx->win);
 	exit(0);
+}
+
+void	iter_change(t_mlx *mlx, int yes)
+{
+	mlx->max_iter += yes * 50;
+	mlx->draw_func(mlx, mlx->colour);
 }
 
 int	key_handler(int keycode, t_mlx *mlx)
@@ -33,6 +39,10 @@ int	key_handler(int keycode, t_mlx *mlx)
 		move_right(mlx);
 	if (keycode == K_LEFT)
 		move_left(mlx);
+	if (keycode == K_PLUS)
+		iter_change(mlx, 1);
+	if (keycode == K_MINUS)
+		iter_change(mlx, -1);
 	if (keycode == K_C)
 		colour_key(mlx);
 	return (0);

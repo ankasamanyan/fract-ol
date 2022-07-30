@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:34:55 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/14 19:27:57 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/07/19 22:42:43 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	mandelbrot_init(t_mlx *mlx)
 	mlx->min_x = -2.4;
 	mlx->max_y = 1;
 	mlx->min_y = -1;
+	mlx->max_iter = 200;
 	mlx->draw_func = &draw_mandelbrot;
 }
 
@@ -32,7 +33,7 @@ void	mandelbrot(t_mlx *mlx, t_colour colour, int x, int y)
 	complex.x = 0.0;
 	complex.y = 0.0;
 	while ((complex.x * complex.x + complex.y * complex.y < 4)
-		&& (mlx->iter < MAX_ITER))
+		&& (mlx->iter < mlx->max_iter))
 	{
 		temp.x = complex.x;
 		temp.y = complex.y;
@@ -40,10 +41,10 @@ void	mandelbrot(t_mlx *mlx, t_colour colour, int x, int y)
 		complex.y = 2 * temp.x * temp.y + constant.y;
 		mlx->iter++;
 	}
-	if (mlx->iter == MAX_ITER)
+	if (mlx->iter == mlx->max_iter)
 		my_mlx_pixel_put(&mlx->img, x, y, 0x00000000);
-	else if (mlx->iter < MAX_ITER)
-		my_mlx_pixel_put(&mlx->img, x, y, mlx->colour_func(colour, mlx->iter));
+	else if (mlx->iter < mlx->max_iter)
+		my_mlx_pixel_put(&mlx->img, x, y, mlx->colour_func(mlx, mlx->iter));
 }
 
 void	draw_mandelbrot( t_mlx *mlx, t_colour colour)
