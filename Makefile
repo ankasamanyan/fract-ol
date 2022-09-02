@@ -6,7 +6,7 @@
 #    By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/05 18:48:15 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/07/14 19:07:07 by ankasamanya      ###   ########.fr        #
+#    Updated: 2022/09/02 03:36:57 by ankasamanya      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,17 +29,22 @@ MLX =	libmlx.a -framework OpenGL -framework AppKit -o
 
 all: $(NAME)
 
+%.o: %.c
+	@$(CC) $(FLAGS) -c $< -o $@
+	@echo "\033[92m.\033[0m\c"
+
 $(NAME): $(OBJ) $(SRC)
-	@$(MAKE) -C mlx
-	$(MV) mlx/libmlx.a mlx/..
-	$(MAKE) bonus -C Libft
+#	 @$(MAKE) -C mlx
+# 	@$(MV) mlx/libmlx.a mlx/..
+	@$(MAKE) bonus -C Libft
 	@$(CC) $(FLAGS) $(OBJ) $(MLX) $(NAME) $(LIBFT)
-	@echo "\033[92mFract-ol successfully compiled!\033[0m"
+	@echo "\033[92m\nFract-ol successfully compiled!\033[0m"
 
 clean:
 	@$(MAKE) fclean -C Libft
-	@$(RM) $(OBJ) $(BONUS_OBJ) libmlx.a
+	@$(RM) $(OBJ) $(BONUS_OBJ)
 	@echo "\033[0;31mFract-ol successfully cleaned!\033[0m"
+
 fclean: clean
 	@($(RM) $(NAME))
 

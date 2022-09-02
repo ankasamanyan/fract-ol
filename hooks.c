@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:12:47 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/19 21:16:10 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/09/02 03:12:59 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	x_close(t_mlx *mlx)
 void	iter_change(t_mlx *mlx, int yes)
 {
 	mlx->max_iter += yes * 50;
-	mlx->draw_func(mlx, mlx->colour);
+	mlx->draw_func(mlx);
 }
 
 int	key_handler(int keycode, t_mlx *mlx)
@@ -53,27 +53,27 @@ void	colour_key(t_mlx *mlx)
 	if (mlx->colour_func == &bernstein_colours)
 	{
 		mlx->colour_func = &hippy_colours;
-		mlx->draw_func(mlx, mlx->colour);
+		mlx->draw_func(mlx);
 	}
 	else if (mlx->colour_func == &hippy_colours)
 	{
 		mlx->colour_func = &acid_colours;
-		mlx->draw_func(mlx, mlx->colour);
+		mlx->draw_func(mlx);
 	}
 	else if (mlx->colour_func == &acid_colours)
 	{
 		mlx->colour_func = &black_white_colours;
-		mlx->draw_func(mlx, mlx->colour);
+		mlx->draw_func(mlx);
 	}
 	else if (mlx->colour_func == &black_white_colours)
 	{
 		mlx->colour_func = &pastel_colours;
-		mlx->draw_func(mlx, mlx->colour);
+		mlx->draw_func(mlx);
 	}
 	else if (mlx->colour_func == &pastel_colours)
 	{
 		mlx->colour_func = &bernstein_colours;
-		mlx->draw_func(mlx, mlx->colour);
+		mlx->draw_func(mlx);
 	}
 }
 
@@ -83,6 +83,8 @@ int	mouse_handler(int button, int x, int y, t_mlx *mlx)
 	int			curr_mouse_pos_y;
 	t_mouse_pos	pos;
 
+	curr_mouse_pos_x = 0;
+	curr_mouse_pos_y = 0;
 	pos.x = curr_mouse_pos_x;
 	pos.y = curr_mouse_pos_y;
 	pos.x = (x / (double)WIDTH) * (mlx->max_x - mlx->min_x) + mlx->min_x;
@@ -90,12 +92,12 @@ int	mouse_handler(int button, int x, int y, t_mlx *mlx)
 	if (button == 4 || button == 1)
 	{
 		zoom_calc(mlx, &pos, 1);
-		mlx->draw_func(mlx, mlx->colour);
+		mlx->draw_func(mlx);
 	}
 	if (button == 5 || button == 2)
 	{
 		zoom_calc(mlx, &pos, 0);
-		mlx->draw_func(mlx, mlx->colour);
+		mlx->draw_func(mlx);
 	}
 	return (0);
 }

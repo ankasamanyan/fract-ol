@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:50:03 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/17 18:19:31 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/09/02 03:17:36 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	burningship_init(t_mlx *mlx)
 	mlx->draw_func = &draw_burninghsip;
 }
 
-void	burningship(t_mlx *mlx, t_colour colour, int x, int y)
+void	burningship(t_mlx *mlx, int x, int y)
 {
 	t_copmlx	constant;
 	t_copmlx	complex;
@@ -46,12 +46,10 @@ void	burningship(t_mlx *mlx, t_colour colour, int x, int y)
 		my_mlx_pixel_put(&mlx->img, x, y, mlx->colour_func(mlx, mlx->iter));
 }
 
-void	draw_burninghsip( t_mlx *mlx, t_colour colour)
+void	draw_burninghsip( t_mlx *mlx)
 {
-	int			x;
-	int			y;
-	t_copmlx	complex;
-	t_input		input;
+	int	x;
+	int	y;
 
 	x = 0;
 	while (x < WIDTH)
@@ -59,7 +57,7 @@ void	draw_burninghsip( t_mlx *mlx, t_colour colour)
 		y = 0;
 		while (y < HEIGHT)
 		{
-			burningship(mlx, colour, x, y);
+			burningship(mlx, x, y);
 			y++;
 		}
 		x++;

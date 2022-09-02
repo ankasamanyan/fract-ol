@@ -6,7 +6,7 @@
 #    By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/05 01:24:17 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/07/13 14:30:17 by ankasamanya      ###   ########.fr        #
+#    Updated: 2022/07/31 01:33:51 by ankasamanya      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,14 +81,20 @@ RM = rm -rf
 
 all: $(NAME) $(BONUS)
 
+%.o: %.c
+	@$(CC) $(FLAGS) -c $< -o $@
+	@echo "\033[92m.\033[0m\c"
+
 $(NAME): $(OBJ)
 	@ar rsc $(NAME) $(OBJ)
+	@echo "\n\033[92mLibft successfully compiled!\033[0m"
 
 clean:
-	$(RM) $(OBJ) $(BONUS_OBJ)
+	@$(RM) $(OBJ) $(BONUS_OBJ)
+	@echo "\033[0;31mLibft successfully cleaned!\033[0m"
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 

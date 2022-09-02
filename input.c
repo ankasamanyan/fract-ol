@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:04:37 by akasaman          #+#    #+#             */
-/*   Updated: 2022/07/14 19:40:40 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/09/02 03:03:53 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	input_check(int argc, char **argv, t_mlx *mlx)
 {
-	argc_check(argc, argv, mlx);
-	color_check(argc, argv, mlx);
+	argc_check(argc, argv);
+	color_check(argv, mlx);
 	if (argc > 3)
-		julia_set_check(argc, argv, mlx);
+		julia_set_check(argv, mlx);
 	return (0);
 }
 
-int	argc_check(int argc, char **argv, t_mlx *mlx)
+int	argc_check(int argc, char **argv)
 {
 	if (argc < 3)
 	{
@@ -43,7 +43,7 @@ int	argc_check(int argc, char **argv, t_mlx *mlx)
 	return (0);
 }
 
-void	color_check(int argc, char **argv, t_mlx *mlx)
+void	color_check(char **argv, t_mlx *mlx)
 {
 	if (ft_strncmp(argv[2], "blue", 5) == 0)
 		mlx->colour_func = &bernstein_colours;
@@ -62,9 +62,9 @@ void	color_check(int argc, char **argv, t_mlx *mlx)
 	}
 }
 
-void	julia_set_check(int argc, char **argv, t_mlx *mlx)
+void	julia_set_check(char **argv, t_mlx *mlx)
 {
-	if (number_check(argc, argv, mlx) == 1)
+	if (number_check(argv, mlx) == 1)
 		return ;
 	if (ft_strncmp(argv[3], "3", 2) == 0)
 	{
@@ -83,7 +83,7 @@ void	julia_set_check(int argc, char **argv, t_mlx *mlx)
 	}
 }
 
-int	number_check(int argc, char **argv, t_mlx *mlx)
+int	number_check(char **argv, t_mlx *mlx)
 {
 	if (ft_strncmp(argv[3], "1", 2) == 0)
 	{

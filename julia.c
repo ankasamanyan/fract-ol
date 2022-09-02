@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 16:53:48 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/07/19 22:42:51 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/09/02 03:16:25 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ void	julia_innit(t_mlx *mlx)
 	mlx->draw_func = &draw_julia;
 }
 
-void	julia(t_mlx *mlx, t_colour colour, int x, int y)
+void	julia(t_mlx *mlx, int x, int y)
 {
 	t_copmlx	constant;
 	t_copmlx	complex;
 	t_copmlx	temp;
-	double		tmp;
 
 	mlx->iter = 0;
 	constant = mlx->julia_const;
@@ -47,12 +46,10 @@ void	julia(t_mlx *mlx, t_colour colour, int x, int y)
 		my_mlx_pixel_put(&mlx->img, x, y, mlx->colour_func(mlx, mlx->iter));
 }
 
-void	draw_julia( t_mlx *mlx, t_colour colour)
+void	draw_julia( t_mlx *mlx)
 {
-	int			x;
-	int			y;
-	t_copmlx	complex;
-	t_input		input;
+	int	x;
+	int	y;
 
 	x = 0;
 	while (x < WIDTH)
@@ -60,7 +57,7 @@ void	draw_julia( t_mlx *mlx, t_colour colour)
 		y = 0;
 		while (y < HEIGHT)
 		{
-			julia(mlx, colour, x, y);
+			julia(mlx, x, y);
 			y++;
 		}
 		x++;
