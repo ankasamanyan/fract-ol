@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+         #
+#    By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/05 01:24:17 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/07/31 01:33:51 by ankasamanya      ###   ########.fr        #
+#    Updated: 2022/09/02 14:05:10 by akasaman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ all: $(NAME) $(BONUS)
 
 %.o: %.c
 	@$(CC) $(FLAGS) -c $< -o $@
-	@echo "\033[92m.\033[0m\c"
+	@echo "\033[92m•\033[0m\c"
 
 $(NAME): $(OBJ)
 	@ar rsc $(NAME) $(OBJ)

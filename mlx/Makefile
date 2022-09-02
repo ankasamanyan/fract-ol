@@ -10,7 +10,7 @@ CFLAGS+=-O2
 
 %.o: %.c
 	@$(CC) $(FLAGS) -c $< -o $@
-	@echo "\033[92m.\033[0m\c"
+	@echo "\033[92m•\033[0m\c"
 # add to match string put with X11 in size and position
 CFLAGS+= -DSTRINGPUTX11
 
