@@ -17,11 +17,13 @@ CFLAGS+= -DSTRINGPUTX11
 all: $(NOM)
 
 $(NOM):	$(OBJ)
-	@ar -r $(NOM) $(OBJ)
+	@ar rsc $(NOM) $(OBJ)
 	@ranlib $(NOM)
+# 	@echo "\033[92m\nMLX successfully compiled!\033[0m"
 
 clean:
 	@rm -f $(NOM) $(OBJ) *~
 	@rm -f mlx_app
+	@echo "\033[0;31mMLX successfully cleaned!\033[0m"
 
 re: clean all

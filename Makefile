@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+         #
+#    By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/05 18:48:15 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/09/02 03:36:57 by ankasamanya      ###   ########.fr        #
+#    Updated: 2022/09/02 13:26:44 by akasaman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,15 +34,15 @@ all: $(NAME)
 	@echo "\033[92m.\033[0m\c"
 
 $(NAME): $(OBJ) $(SRC)
-#	 @$(MAKE) -C mlx
-# 	@$(MV) mlx/libmlx.a mlx/..
+	@$(MAKE) -C mlx
+	@$(MV) mlx/libmlx.a mlx/..
 	@$(MAKE) bonus -C Libft
 	@$(CC) $(FLAGS) $(OBJ) $(MLX) $(NAME) $(LIBFT)
 	@echo "\033[92m\nFract-ol successfully compiled!\033[0m"
 
 clean:
 	@$(MAKE) fclean -C Libft
-	@$(RM) $(OBJ) $(BONUS_OBJ)
+	@$(RM) $(OBJ) $(BONUS_OBJ) libmlx.a
 	@echo "\033[0;31mFract-ol successfully cleaned!\033[0m"
 
 fclean: clean
