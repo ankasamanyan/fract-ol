@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 18:12:47 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/09/04 23:16:11 by ankasamanya      ###   ########.fr       */
+/*   Created: 2022/09/04 23:39:19 by ankasamanya       #+#    #+#             */
+/*   Updated: 2022/09/04 23:39:28 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ int	x_close(t_mlx *mlx)
 
 void	iter_change(t_mlx *mlx, int yes)
 {
-	mlx->max_iter += yes * 50;
-	mlx->draw_func(mlx);
+	if (mlx->max_iter + (yes * 50) > 0)
+	{
+		mlx->max_iter += yes * 50;
+		mlx->draw_func(mlx);
+	}
 }
 
 int	key_handler(int keycode, t_mlx *mlx)
