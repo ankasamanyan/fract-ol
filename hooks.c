@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:12:47 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/09/02 03:12:59 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/09/04 23:16:11 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,8 @@ void	colour_key(t_mlx *mlx)
 
 int	mouse_handler(int button, int x, int y, t_mlx *mlx)
 {
-	int			curr_mouse_pos_x;
-	int			curr_mouse_pos_y;
 	t_mouse_pos	pos;
 
-	curr_mouse_pos_x = 0;
-	curr_mouse_pos_y = 0;
-	pos.x = curr_mouse_pos_x;
-	pos.y = curr_mouse_pos_y;
 	pos.x = (x / (double)WIDTH) * (mlx->max_x - mlx->min_x) + mlx->min_x;
 	pos.y = (y / (double)HEIGHT) * (mlx->max_y - mlx->min_y) + mlx->min_y;
 	if (button == 4 || button == 1)
