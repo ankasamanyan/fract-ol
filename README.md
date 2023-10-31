@@ -1,4 +1,22 @@
-# fract-ol
+# Fract-ol
+
+Fract-ol is an engaging graphics project entirely written in C with a simple graphical library. The project invites you to explore the captivating world of fractals. In mathematics, fractals are complex geometric shapes that exhibit intricate patterns and self-similarity, meaning they resemble themselves at various scales. The project provides an interactive platform to visualize and interact with different types of fractals, offering both a creative and educational experience.
+
+## How to use 
+
+```shell
+./fractol <flag> <colour> (<julia_set_number>)
+```
+
+<img width="810" alt="image" src="https://github.com/ankasamanyan/fract-ol/assets/89840461/9a113d81-1e23-4216-bd3e-f799915014cb">
+
+
+## Example to run 
+
+```shell
+./fractol -m blue
+```
+## Preview
 
 https://user-images.githubusercontent.com/89840461/224736151-22398bb1-5a72-447e-a2e4-7523fdb124c0.mp4
 
