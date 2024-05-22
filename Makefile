@@ -19,7 +19,6 @@ SRC =	fract-ol.c input.c the_math.c \
 OBJ =	$(SRC:.c=.o)
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 MV = mv
 
@@ -37,7 +36,7 @@ $(NAME): $(OBJ) $(SRC)
 	@$(MAKE) -C mlx
 	@$(MV) mlx/libmlx.a mlx/..
 	@$(MAKE) bonus -C Libft
-	@$(CC) $(FLAGS) $(OBJ) $(MLX) $(NAME) $(LIBFT)
+	@$(CC) $(OBJ) $(MLX) $(NAME) $(LIBFT)
 	@echo "\033[92m\nFract-ol successfully compiled!\033[0m"
 
 clean:
