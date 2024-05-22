@@ -76,13 +76,12 @@ BONUS =	ft_lstnew.c \
 BONUS_OBJ =$(BONUS:.c=.o)
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
 all: $(NAME) $(BONUS)
 
 %.o: %.c
-	@$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) -c $< -o $@
 	@echo "\033[92m•\033[0m\c"
 
 $(NAME): $(OBJ)
