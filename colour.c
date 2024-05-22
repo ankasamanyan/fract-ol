@@ -66,9 +66,6 @@ int	acid_colours(t_mlx *mlx, int iter)
 
 int	black_white_colours(t_mlx *mlx, int iter)
 {
-	double	x;
-
-	x = (double)iter / mlx->max_iter;
 	mlx->colour.t = 0;
 	mlx->colour.r = sin(0.16 * iter + 4) * 127.5 + 127.5;
 	mlx->colour.g = sin(0.16 * iter + 4) * 127.5 + 127.5;
